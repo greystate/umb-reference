@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE docset [
+	
+	<!ENTITY fallback-content '
+		<element ref="if" />
+		<element ref="choose" />
+		<element ref="for-each" />
+		<element ref="value-of" />
+		<element ref="comment" />
+		<element ref="text" />
+		<element ref="param" />
+		<element ref="variable" />
+		<element ref="number" />
+		<element ref="apply-templates" />
+		<element ref="call-template" />
+		<element ref="processing-instruction" />
+	'>
+
+	<!ENTITY template-content '
+		&fallback-content;
+		<element ref="apply-imports" />
+		<element ref="fallback" />
+	'>
+
+	<!ENTITY param-content '
+		<element ref="if" />
+		<element ref="choose" />
+		<element ref="for-each" />
+		<element ref="value-of" />
+		<element ref="text" />
+		<element ref="number" />
+	'>
+
+	<!ENTITY root-content '
+		<element ref="import" />
+		<element ref="include" />
+		<element ref="key" />
+		<element ref="attribute-set" />
+		<element ref="output" />
+	'>
+]>
+<docset name="XSLT 1.0" version="0.9.3.4">
+	
+	<!-- Attributes for later reference -->
+	<attribute name="match" content="pattern" />
+	<attribute name="name" content="string" />
+	<attribute name="mode" content="string" />
+	<attribute name="select" content="expression" />
+	<attribute name="test" content="condition" />
+	<attribute name="disable-output-escaping" content="boolean" />
+
+	<!-- Elements for later reference -->
+	<element name="stylesheet">
+		<attribute name="version" content="enum" values="1.0" required="yes" />
+		<attribute name="exclude-result-prefixes" content="nmtokens" />
+		<attribute name="extension-element-prefixes" content="nmtokens" />
+		
+		&root-content;
+		
+	</element>
+
+	<element name="transform">
+		<description>
+			<p>This is an alias for the <ref>stylesheet</ref> element - almost never used.</p>
+		</description>
+		<attribute name="version" content="enum" values="1.0" required="yes" />
+		
+		&root-content;
+		
+	</element>
+
+	<element name="template">
+		<description>
+			<p>
+				A template defines a chunk of output. When using the <var>match</var> attribute,
+				it can only be invoked by an <ref>apply-templates</ref> instruction (which can process multiple
+				elements and their templates in a single operation), and is guaranteed to have the context of
+				an element matching the pattern in the <var>match</var> attribute.
+			</p>
+			<p>
+				When using the <var>name</var> attribute, the template can be manually invoked by
+				a <ref>call-template</ref> instruction, thus resembling a <em>sub-routine</em> in other
+				languages.
+			</p>
+			<p>
+				The <var>mode</var> attribute facilitates multiple outputs for the same element, e.g. if
+				an <code><![CDATA[<article>]]></code> needs a short version for the Table of Contents at
+				the top of the output, and a longer version for the actual article content.
+			</p>
+			<note>
+				It's perfectly valid to have both a <var>match</var> and a <var>name</var> attribute on a
+				template, if it makes sense. But you're required to use at least one of them.
+			</note>
+		</description>
+		<attribute ref="match" />
+		<attribute ref="name" />
+		<attribute ref="mode" />
+		<attribute name="priority" content="number" />
+
+		&template-content;
+		
+	</element>
+
+	<!-- Output elements -->
+	<element name="value-of">
+		<description>
+			<p>
+				This is used to generate a string value in the output by selecting something from the
+				input document. The <var>select</var> attribute is an XPath expression - if it selects
+				a node set, <em>only the string value of the first node in the set will be output.</em>
+			</p>
+			<note>
+				Though the <var>disable-output-escaping</var> attribute can be used to output text as
+				HTML or XML, it is thus also possible to generate invalid XML - so be sure to know what
+				the source contains before blindly transferring it to the output document.
+			</note>
+		</description>
+		<attribute ref="select" required="yes" />
+		<attribute ref="disable-output-escaping" />
+	</element>
+	
+	<element name="text">
+		<attribute ref="disable-output-escaping" />
+	</element>
+	
+	<element name="comment">
+		<description>
+			<p>Use this to generate a comment in the output.</p>
+			<note>
+				This is necessary because a regular comment is in fact just
+				a comment in the stylesheet, which is used to comment the code,
+				and is in fact stripped by the XML parser before the XSLT processor
+				gets the stylesheet.
+			</note>
+		</description>
+		<example><![CDATA[<xsl:comment>This file is auto-generated</xsl:comment>]]></example>
+	</element>
+	
+	<element name="attribute">
+		<description>
+			<p>
+				Generates an attribute on the element being output. Must precede any
+				content generated for an element (i.e.: text, child elements, comments etc.)
+			</p>
+			<note>
+				Can be used to override an attribute you've already set, as
+				duplicate attribute names are not allowed in XML.
+			</note>
+		</description>
+		<attribute ref="name" required="yes" />
+		<attribute name="namespace" content="URI" />
+		&template-content;
+	</element>
+	
+	<element name="element">
+		<description>
+			<p>
+				Creates an element with a specific <var>name</var>.
+			</p>
+			<p>
+				Only necessary if you don't know the name of the element (e.g. if it's computed, like <code><![CDATA[<xsl:element name="h{$level}">]]></code>),
+				or if you need to create the element in a specific namespace. Otherwise it's much better to just use the
+				element tag directly (i.e., just use <code><![CDATA[<div>]]></code>
+				instead of <code><![CDATA[<xsl:element name="div">]]></code>).
+			</p>
+		</description>
+		<attribute ref="name" />
+		<attribute name="namespace" content="URI" />
+		&template-content;
+	</element>
+	
+	<element name="processing-instruction">
+		<description>
+			<p>
+				Generates a <em>Processing Instruction</em> in the output; usually used for
+				adding some kind of machine-info to the file.
+			</p>
+			<p>
+				A processing instruction can be selected in an XPath expression using the <ref>processing-instruction()</ref> function.
+			</p>
+			<note>Although the <var>name</var> attribute isn't required, no output
+			will be generated if it's missing.</note>
+		</description>
+		<example><![CDATA[<!-- Generates something like this: <?doc-version v0.9.3.4 ?> -->
+<xsl:processing-instruction name="doc-version">
+  <xsl:value-of select="$version" />
+</xsl:processing-instruction>]]></example>
+		<attribute ref="name" />
+	</element>
+	
+	<element name="number">
+		<attribute name="count" content="expression" />
+		<attribute name="level" content="enum" values="single|multiple|any" />
+		<attribute name="from" content="expression" />
+		<attribute name="value" content="expression" />
+		<attribute name="format" content="string" />
+		<attribute name="lang" content="string" />
+		<attribute name="letter-value" content="enum" values="alphabetic|traditional" />
+		<attribute name="grouping-separator" content="char" />
+		<attribute name="grouping-size" content="number" />
+	</element>
+	
+	<!-- Program flow elements -->
+	<element name="apply-templates">
+		<description>
+			<p>
+				Collects the nodes specified by the <var>select</var> attribute and
+				starts processing them using matching templates.
+			</p>
+			<p>
+				Using the <var>mode</var> attribute restricts the applied templates to
+				only those with an identical mode attribute.
+			</p>
+			<note>
+				If no select attribute is present, it defaults to "*", i.e. the children
+				of the current node.
+			</note>
+		</description>
+		<attribute ref="select" />
+		<attribute ref="mode" />
+		
+		<element ref="sort" />
+		<element ref="with-param" />
+	</element>
+	
+	<element name="apply-imports">
+		<description>
+			<p>
+				This is used to allow the processor to process any imported templates that
+				matches the context node
+			</p>
+		</description>
+		<example><![CDATA[<!-- We need to wrap every movie element -->
+<xsl:template match="movie">
+  <div class="movie">
+    <!-- Process the imported template for movie elements -->
+    <xsl:apply-imports />
+  </div>
+</xsl:template>]]></example>
+	</element>
+
+	<element name="call-template">
+		<description>
+			<p>
+				Explicitly call a named <ref>template</ref> (a template with a name attribute).
+				The template will execute with the context at the point of this instruction.
+			</p>
+			<p>
+				If the template accepts arguments (parameters), use the <ref>with-param</ref> element
+				to supply values to those.
+			</p>
+		</description>
+		<attribute ref="name" required="yes" />
+		<element ref="with-param" />
+		<example><![CDATA[<!-- Simple -->
+<xsl:call-template name="headers" />
+
+<!-- With argument -->
+<xsl:call-template name="fibonacci">
+	<xsl:with-param name="from" select="13" />
+</xsl:call-template>]]></example>
+	</element>
+
+	<element name="with-param">
+		<attribute ref="name" required="yes" />
+		<attribute ref="select" />
+	</element>
+	
+	<element name="for-each">
+		<description>
+			<p>
+				Almost an alias for <ref>apply-templates</ref> in that it also collects a set of nodes
+				for processing, but all nodes will be processed using the same (embedded) template.
+			</p>
+		</description>
+		<attribute ref="select" required="yes" />
+		<element ref="sort" />
+		
+		&template-content;
+		
+	</element>
+	
+	<element name="if">
+		<attribute ref="test" required="yes" />
+		
+		&template-content;
+		
+	</element>
+
+	<element name="choose">
+		<description>
+			<p>
+				Similar to switch and if/elseif statements in other languages, this is used
+				to choose between one or more outcomes. It's a bit verbose, and for simple
+				A/B scenarios it's often possible to handle the logic in a single XPath
+				statement instead.
+			</p>
+			<p>
+				Only the first <ref>when</ref> where the test returns <var>true()</var> will be executed
+				(or, if no <ref>when</ref>-statements succeed, the contents of <ref>otherwise</ref>, if present).
+			</p>
+		</description>
+		<element ref="when" />
+		<element ref="otherwise" />
+	</element>
+
+	<element name="when">
+		<description>
+			<p>
+				Used in the <ref>choose</ref> construct to test a condition and
+				if <var>true()</var>, execute the contents.
+			</p>
+			<p>
+				The condition in the test attribute is implicitly wrapped in a <var>boolean()</var>
+				function to always return <var>true()</var> or <var>false()</var>.
+			</p>
+		</description>
+		<attribute ref="test" required="yes" />
+		&template-content;
+	</element>
+
+	<element name="otherwise">
+		<description>
+			<p>
+				Part of a <ref>choose</ref> construct - executed if none of the preceding
+				<ref>when</ref> statements returned <var>true()</var>.
+			</p>
+		</description>
+		&template-content;
+	</element>
+	
+	<!-- Misc. elements -->
+	<element name="variable">
+		<attribute ref="name" required="yes" />
+		<attribute ref="select" />
+		
+		&param-content;
+		
+	</element>
+	
+	<element name="strip-space">
+		<description>
+			<p>
+				Instructs the processor to remove all white-space nodes from specific
+				elements in the source document before they're handled by XSLT.
+			</p>
+			<note>
+				You can use the value "*" to strip space from all elements.
+			</note>
+		</description>
+		<attribute name="elements" content="nmtokens" />
+	</element>
+	
+	<element name="preserve-space">
+		<description>
+			<p>
+				Instructs the processor to preserve white-space nodes from specific
+				elements in the source document before they're handled by XSLT.
+			</p>
+			<note>
+				The default behavior is to preserve white-space, so this element is provided
+				so you can preserve specific elements' white-space, in case <ref>strip-space</ref>
+				has been set to "all others" ("*").
+			</note>
+		</description>
+		<attribute name="elements" content="nmtokens" />
+	</element>
+	
+	<element name="param">
+		<description>
+			<p>
+				Defines a value that can be used in many places, which should be easily changeable
+				from e.g. the top of the file. Once defined, a parameter can be used by prefixing the name
+				with a dollar-sign, e.g. <code><![CDATA[<xsl:value-of select="$primary-color">]]></code>
+				or <code><![CDATA[<div class="{$selected-class}">]]></code>.
+			</p>
+			<p>
+				A parameter is very similar to a <ref>variable</ref>, and none of them can be changed
+				within the same transformation.
+			</p>
+			<note>
+				The difference between a parameter and a <ref>variable</ref> is that a parameter can be set
+				from the XSLT Processor when invoking the transform.
+			</note>
+		</description>
+		<attribute ref="name" required="yes" />
+		<attribute name="select" />
+		
+		&param-content;
+		
+	</element>
+	
+	<element name="attribute-set">
+		<description>
+			<p>
+				Used to build a set of attributes for reuse on multiple output elements.
+				Use the special <var>xsl:use-attribute-sets</var> attribute on any literal output element,
+				to tell the processor to generate these attributes on the element.
+			</p>
+		</description>
+		<attribute ref="name" required="yes" />
+		<element ref="attribute" />
+	</element>
+	
+	<element name="decimal-format">
+		<description>
+			<p>
+				Defines a named custom format for use with the <ref>number</ref> instruction
+				and the <ref>format-number()</ref> function.
+			</p>
+		</description>
+		<attribute ref="name" />
+		<attribute name="decimal-separator" content="char" />
+		<attribute name="grouping-separator" content="char" />
+		<attribute name="infinity" content="string" />
+		<attribute name="minus-sign" content="char" />
+		<attribute name="NaN" content="string" />
+		<attribute name="percent" content="char" />
+		<attribute name="per-mille" content="char" />
+		<attribute name="zero-digit" content="char" />
+		<attribute name="digit" content="char" />
+		<attribute name="pattern-separator" content="char" />
+	</element>
+	
+	<element name="sort">
+		<description>
+			<p>
+				If present, this <strong>must</strong> be the first element inside a <ref>for-each</ref> or an
+				<ref>apply-templates</ref> instruction.
+			</p>
+			<note>
+				Multiple sort elements are allowed.
+			</note>
+		</description>
+		<attribute ref="select" />
+		<attribute name="data-type" content="enum" values="text|number" />
+		<attribute name="order" content="enum" values="ascending|descending" />
+		<attribute name="case-order" content="enum" values="upper-first|lower-first" />
+		<attribute name="lang" content="string" />
+	</element>
+	
+	<element name="key">
+		<description>
+			<p>
+				Creates a named index of elements matching the expression in the <var>match</var> attribute.
+				The value retrieved from the <var>use</var> attribute is stored as the index value.
+			</p>
+			<note>
+				To retrieve nodes from the index, use the XPath <ref>key()</ref> function.
+			</note>
+		</description>
+		<attribute ref="match" required="yes" />
+		<attribute ref="name" required="yes" />
+		<attribute name="use" content="expression" required="yes" />
+	</element>
+	
+	<element name="include">
+		<attribute name="href" content="URI" required="yes" />
+	</element>
+		
+	<element name="import">
+		<description>
+			<note>
+				The <ref>import</ref> statement(s) <strong>must</strong> appear before
+				any other child node of the main stylesheet.
+			</note>
+		</description>
+		<attribute name="href" content="URI" required="yes" />
+	</element>
+	
+	<element name="output">
+		<attribute name="method" content="enum" values="html|xml|text" />
+		<attribute name="indent" content="boolean" />
+		<attribute name="omit-xml-declaration" content="boolean" />
+		<attribute name="doctype-public" content="URI" />
+		<attribute name="doctype-system" content="URI" />
+		<attribute name="cdata-section-elements" content="nmtokens" />
+	</element>
+	
+	<element name="fallback">
+		<description>
+			<p>
+				The contents of the fallback instruction is only instantiated if its
+				parent element is not supported by the XSLT processor. Rarely used.
+			</p>
+		</description>
+		&fallback-content;
+	</element>
+	
+	<element name="message">
+		<description>
+			<p>
+				Used to output debugging/logging info to <code>stdout</code> during
+				transformation. If the <var>terminate</var> attribute is set to <code>yes</code>,
+				the transformation will terminate.
+			</p>
+		</description>
+		<attribute name="terminate" content="boolean" />
+	</element>
+	
+	<include href="functions.xml" parse="xml" xmlns="http://www.w3.org/2001/XInclude" />
+</docset>

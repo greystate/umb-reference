@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functions>
+	<function name="translate">
+		<description>
+			<p>
+				Performs character-replacements in the <var>source</var> string, by replacing every character in the
+				<var>find</var> argument found in <var>source</var>, with the character in <var>replace</var> at
+				the same index </p>
+		</description>
+		<argument name="source" type="string" required="yes" />
+		<argument name="find" type="string" required="yes" />
+		<argument name="replace" type="string" required="yes" />
+	</function>
+
+	<function name="generate-id">
+		<description>
+			<p>Returns a unique string ID for the selected node (or the current node if none specified).</p>
+		</description>
+		<argument name="node" type="expression" />
+		
+	</function>
+	
+	<function name="position">
+		<description>
+			<p>Returns the current node's index (1-based) within the <em>current nodelist</em>.</p>
+		</description>
+	</function>
+	
+	<function name="current">
+		<description>
+			<p>Returns the current node</p>
+		</description>
+	</function>
+	
+	<function name="substring">
+		<description>
+			<p>
+				Returns part of (a) <var>string</var> starting at <var>start</var>, spanning at most <var>length</var> characters.
+				If <var>length</var> isn&#8217;t specified, the rest of the string from index <var>start</var> will be returned.
+			</p>
+			<note>
+				Indexes in XPath/XSLT are 1-based, so the first character in a string can be found with: <code>substring($string, 1, 1)</code> 
+			</note>
+		</description>
+		<argument name="string" type="expression" required="yes" />
+		<argument name="start" type="number" required="yes" />
+		<argument name="length" type="number" />
+	</function>
+	
+	<function name="substring-after">
+		<description>
+			<p>Returns the rest of the <var>source</var> string, following the <var>find</var> string.</p>
+		</description>
+		<argument name="source" type="expression" required="yes" />
+		<argument name="find" type="expression" required="yes" />
+	</function>
+	
+	<function name="substring-before">
+		<description>
+			<p>Returns everything that comes before the <var>find</var> string inside the <var>source</var> string.</p>
+		</description>
+		<argument name="source" type="expression" required="yes" />
+		<argument name="find" type="expression" required="yes" />
+	</function>
+	
+	<function name="normalize-space">
+		<description>
+			<p>
+				Returns a copy of the <var>source</var> string with leading and trailing space removed, as well as
+				compressing runs of whitespace characters into a single space.
+			</p>
+		</description>
+		<example>
+			<code>normalize-space('  a   little  tiny space   ')</code> returns: <code>a little tiny space</code>
+		</example>
+		<argument name="source" type="expression" />
+	</function>
+	
+	<function name="concat">
+		<description>
+			<p>Returns a string by concatenating the string value of all arguments</p>
+		</description>
+
+		<argument name="string1" type="expression" required="yes" />
+		<argument name="string2" type="expression" required="yes" />
+		<argument name="stringN&#8230;" type="expression" />
+	</function>
+	
+	<function name="contains">
+		<description>
+			<p>
+				Returns <var>true()</var> if the <var>source</var> string contains the <var>find</var> string.
+				Otherwise, it returns <var>false().</var>
+			</p>
+		</description>
+		<argument name="source" type="expression" required="yes" />
+		<argument name="find" type="expression" required="yes" />
+	</function>
+	
+	<function name="string-length">
+		<description>
+			<p>Returns the number of characters in the <var>string</var>.</p>
+		</description>
+		<argument name="string" type="expression" required="yes" />
+	</function>
+	
+	<function name="function-available">
+		<description>
+			<p>Returns <var>true()</var> if a function with the specified name exists.</p>
+			<note>
+				You should include the prefix if the function is defined in another namespace, e.g.:
+				<code>function-available('msxsl:node-set')</code>
+			</note>
+		</description>
+		<argument name="function" type="string" required="yes" />
+	</function>
+	
+	<function name="format-number">
+		
+		<argument name="number" type="expression" required="yes" />
+		<argument name="pattern" type="string" required="yes" />
+		<argument name="decimal-format" type="string" />
+	</function>
+	
+	<function name="boolean">
+		<description>
+			<p>Convert the <var>condition</var> expression to either <var>true()</var> or <var>false()</var>.</p>
+			<p>An empty string, an empty nodeset or the number 0 returns <var>false()</var>, anything else returns <var>true()</var>.</p>
+			<note>
+				Watch out for these pitfalls: ALL of these return <var>true()</var> when used in an expression that expects a boolean result,
+				e.g., in the <var>test</var> attribute of a <ref>when</ref> or an <ref>if</ref> element: "1", "0", "true", "false"
+			</note>
+		</description>
+		<argument name="condition" type="expression" required="yes" />
+	</function>
+	
+	<function name="key">
+		<description>
+			<p>
+				Returns a node set of all the nodes in the <var>name</var> index,
+				with the value <var>value</var> stored.
+				Used in conjunction with the <ref>key</ref> element to facilitate
+				fast and easy lookups in the source XML.
+			</p>
+		</description>
+		<argument name="name" type="string" required="yes" />
+		<argument name="value" type="expression" required="yes" />
+	</function>
+	
+	<function name="id">
+		<description>
+			<p>
+				If the nodes in your document has a unique ID attribute (defined in the DOCTYPE), you can
+				use the <ref>id</ref> function to select them with. The <var>ids</var> argument takes a whitespace
+				separated string of IDs or a nodeset to take values from, and returns a nodeset containing all
+				of the nodes referenced by their IDs.
+			</p>
+		</description>
+		<example>
+			<pre><code><![CDATA[<!-- Grab three specific nodes by their IDs -->
+<xsl:variable name="static" select="id('4815 1623 4200')" />
+
+<!-- Grab any node referenced in a `<nodeId>` child -->
+<xsl:variable name="dynamic" select="id(nodeId)" />]]></code></pre>
+		</example>
+		<argument name="ids" type="string" required="yes" />
+	</function>
+	
+	<function name="document">
+		<description>
+			<p>
+				Returns a nodeset pointing at the root node ("/") of the document found at the
+				specified <var>URL</var>. 
+			</p>
+		</description>
+		<argument name="URL" type="URI" required="yes" />
+		<argument name="base" type="expression" />
+	</function>
+	
+	<function name="number">
+		<description>
+			<p>Convert a nodeset, boolean value or string to a number</p>
+		</description>
+		<argument name="source" type="expression" required="yes" />
+	</function>
+	
+	<function name="true">
+		<description>
+			<p>Returns the boolean value <strong>true</strong></p>
+		</description>
+	</function>
+	
+	<function name="false">
+		<description>
+			<p>Returns the boolean value <strong>false</strong></p>
+		</description>
+	</function>
+	
+	<function name="string">
+		<description>
+			<p>Convert a value (nodeset, number, boolean or another string) to a <var>string</var> value</p>
+		</description>
+		<argument name="value" type="expression" required="yes" />
+	</function>
+	
+	<function name="processing-instruction">
+		<description>
+			<p>Returns a nodeset of the current context node's Processing Instruction children - if a <var>name</var> is specified,
+			the list is filtered to only include those matching that.</p>
+		</description>
+		<argument name="name" type="string" />
+	</function>
+	
+	
+	
+</functions>

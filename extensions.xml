@@ -1,0 +1,873 @@
+<?xml version="1.0"?>
+<docset name="XSLT 1.0" version="0.9.3.4">
+  <functions>
+    <function name="GetUmbracoHelper">
+      <description>
+        <p>
+            Returns a new UmbracoHelper so that we can start moving the logic from some of these methods to it
+            </p>
+      </description>
+    </function>
+    <function name="#ctor">
+      <description>
+        <p>
+            Empty constructor
+            </p>
+      </description>
+    </function>
+    <function name="#ctor(umbraco.page)">
+      <description>
+        <p>
+            Initializes a new instance of the  class.
+            </p>
+      </description>
+      <argument name="Page"/>
+    </function>
+    <function name="PythonExecuteFile(System.String)">
+      <description>
+        <p>
+            Executes the given python script and returns the standardoutput.
+            The Globals known from python macros are not accessible in this context.
+            Neither macro or page nor the globals known from python macros are 
+            accessible in this context. Only stuff we initialized in site.py
+            can be used.
+            </p>
+      </description>
+      <argument name="file"/>
+    </function>
+    <function name="PythonExecute(System.String)">
+      <description>
+        <p>
+            Executes the given python expression and returns the standardoutput.
+            The Globals known from python macros are not accessible in this context.
+            Neighter macro or page nor the globals known from python macros are 
+            accessible in this context. Only stuff we initialized in site.py
+            can be used.
+            </p>
+      </description>
+      <argument name="expression"/>
+    </function>
+    <function name="UnPublishSingleNode(System.Int32)">
+      <description>
+        <p>
+            Unpublish a node, by removing it from the runtime xml index. Note, prior to this the Document should be 
+            marked unpublished by setting the publish property on the document object to false
+            </p>
+      </description>
+      <argument name="DocumentId"/>
+    </function>
+    <function name="UpdateDocumentCache(System.Int32)">
+      <description>
+        <p>
+            Publishes a Document by adding it to the runtime xml index. Note, prior to this the Document should be 
+            marked published by calling Publish(User u) on the document object.
+            </p>
+      </description>
+      <argument name="documentId"/>
+    </function>
+    <function name="PublishSingleNode(System.Int32)">
+      <description>
+        <p>
+            Publishes the single node, this method is obsolete
+            </p>
+      </description>
+      <argument name="DocumentId"/>
+    </function>
+    <function name="RefreshContent">
+      <description>
+        <p>
+            Refreshes the xml cache for all nodes
+            </p>
+      </description>
+    </function>
+    <function name="RePublishNodes(System.Int32)">
+      <description>
+        <p>
+            Re-publishes all nodes under a given node
+            </p>
+      </description>
+      <argument name="nodeID"/>
+    </function>
+    <function name="RePublishNodesDotNet(System.Int32)">
+      <description>
+        <p>
+            Re-publishes all nodes under a given node
+            </p>
+      </description>
+      <argument name="nodeID"/>
+    </function>
+    <function name="RePublishNodesDotNet(System.Int32,System.Boolean)">
+      <description>
+        <p>
+            Refreshes the runtime xml index. 
+            Note: This *doesn't* mark any non-published document objects as published
+            </p>
+      </description>
+      <argument name="nodeID"/>
+      <argument name="SaveToDisk"/>
+    </function>
+    <function name="JsonToXml(System.String)">
+      <description>
+        <p>
+            This will convert a json structure to xml for use in xslt
+            </p>
+      </description>
+      <argument name="json"/>
+    </function>
+    <function name="setSession(System.String,System.String)">
+      <description>
+        <p>
+            Add a session variable to the current user
+            </p>
+      </description>
+      <argument name="key"/>
+      <argument name="value"/>
+    </function>
+    <function name="setCookie(System.String,System.String)">
+      <description>
+        <p>
+            Add a cookie variable to the current user
+            </p>
+      </description>
+      <argument name="key"/>
+      <argument name="value"/>
+    </function>
+    <function name="NiceUrl(System.Int32)">
+      <description>
+        <p>
+            Returns a string with a friendly url from a node.
+            IE.: Instead of having /482 (id) as an url, you can have
+            /screenshots/developer/macros (spoken url)
+            </p>
+      </description>
+      <argument name="nodeID"/>
+    </function>
+    <function name="NiceUrlFullPath(System.Int32)">
+      <description>
+        <p>
+            This method will always add the root node to the path. You should always use NiceUrl, as that is the
+            only one who checks for toplevel node settings in the web.config
+            </p>
+      </description>
+      <argument name="nodeID"/>
+    </function>
+    <function name="NiceUrlWithDomain(System.Int32)">
+      <description>
+        <p>
+            This method will always add the domain to the path if the hostnames are set up correctly. 
+            </p>
+      </description>
+      <argument name="nodeID"/>
+    </function>
+    <function name="NiceUrlWithDomain(System.Int32,System.Boolean)">
+      <description>
+        <p>
+            This method will always add the domain to the path. 
+            </p>
+      </description>
+      <argument name="nodeID"/>
+      <argument name="ignoreUmbracoHostNames"/>
+    </function>
+    <function name="GetItem(System.Int32,System.String)">
+      <description>
+        <p>
+            Returns a string with the data from the given element of a node. Both elements (data-fields)
+            and properties can be used - ie:
+            getItem(1, nodeName) will return a string with the name of the node with id=1 even though
+            nodeName is a property and not an element (data-field).
+            </p>
+      </description>
+      <argument name="nodeID"/>
+      <argument name="alias"/>
+    </function>
+    <function name="GetCurrentDomains(System.Int32)">
+      <description>
+        <p>
+            Checks with the Assigned domains settings and retuns an array the the Domains matching the node
+            </p>
+      </description>
+      <argument name="NodeId"/>
+    </function>
+    <function name="GetItem(System.String)">
+      <description>
+        <p>
+            Returns a string with the data from the given element of the current node. Both elements (data-fields)
+            and properties can be used - ie:
+            getItem(nodeName) will return a string with the name of the current node/page even though
+            nodeName is a property and not an element (data-field).
+            </p>
+      </description>
+      <argument name="alias"/>
+    </function>
+    <function name="GetPropertyTypeName(System.String,System.String)">
+      <description>
+        <p>
+            Returns that name of a generic property
+            </p>
+      </description>
+      <argument name="ContentTypeAlias"/>
+      <argument name="PropertyTypeAlias"/>
+    </function>
+    <function name="GetMemberName(System.Int32)">
+      <description>
+        <p>
+            Returns the Member Name from an umbraco member object
+            </p>
+      </description>
+      <argument name="MemberId"/>
+    </function>
+    <function name="GetMedia(System.Int32,System.Boolean)">
+      <description>
+        <p>
+            Get a media object as an xml object
+            </p>
+      </description>
+      <argument name="MediaId"/>
+      <argument name="Deep"/>
+    </function>
+    <function name="GetMember(System.Int32)">
+      <description>
+        <p>
+            Get a member as an xml object
+            </p>
+      </description>
+      <argument name="MemberId"/>
+    </function>
+    <function name="GetCurrentMember">
+      <description>
+        <p>
+            Get the current member as an xml node
+            </p>
+      </description>
+    </function>
+    <function name="IsLoggedOn">
+      <description>
+        <p>
+            Whether or not the current user is logged in (as a member)
+            </p>
+      </description>
+    </function>
+    <function name="IsProtected(System.Int32,System.String)">
+      <description>
+        <p>
+            Check if a document object is protected by the "Protect Pages" functionality in umbraco
+            </p>
+      </description>
+      <argument name="DocumentId"/>
+      <argument name="Path"/>
+    </function>
+    <function name="HasAccess(System.Int32,System.String)">
+      <description>
+        <p>
+            Check if the current user has access to a document
+            </p>
+      </description>
+      <argument name="NodeId"/>
+      <argument name="Path"/>
+    </function>
+    <function name="md5(System.String)">
+      <description>
+        <p>
+            Returns an MD5 hash of the string specified
+            </p>
+      </description>
+      <argument name="text"/>
+    </function>
+    <function name="DateGreaterThan(System.String,System.String)">
+      <description>
+        <p>
+            Compare two dates
+            </p>
+      </description>
+      <argument name="firstDate"/>
+      <argument name="secondDate"/>
+    </function>
+    <function name="DateGreaterThanOrEqual(System.String,System.String)">
+      <description>
+        <p>
+            Compare two dates
+            </p>
+      </description>
+      <argument name="firstDate"/>
+      <argument name="secondDate"/>
+    </function>
+    <function name="DateGreaterThanToday(System.String)">
+      <description>
+        <p>
+            Check if a date is greater than today
+            </p>
+      </description>
+      <argument name="firstDate"/>
+    </function>
+    <function name="DateGreaterThanOrEqualToday(System.String)">
+      <description>
+        <p>
+            Check if a date is greater than or equal today
+            </p>
+      </description>
+      <argument name="firstDate"/>
+    </function>
+    <function name="CurrentDate">
+      <description>
+        <p>
+            Get the current date
+            </p>
+      </description>
+    </function>
+    <function name="DateAdd(System.String,System.String,System.Int32)">
+      <description>
+        <p>
+            Add a value to a date
+            </p>
+      </description>
+      <argument name="Date"/>
+      <argument name="AddType"/>
+      <argument name="add"/>
+    </function>
+    <function name="GetWeekDay(System.String)">
+      <description>
+        <p>
+            Get the day of week from a date matching the current culture settings
+            </p>
+      </description>
+      <argument name="Date"/>
+    </function>
+    <function name="DateAddWithDateTimeObject(System.DateTime,System.String,System.Int32)">
+      <description>
+        <p>
+            Add a value to a date. Similar to the other overload, but uses a datetime object instead of a string
+            </p>
+      </description>
+      <argument name="Date"/>
+      <argument name="AddType"/>
+      <argument name="add"/>
+    </function>
+    <function name="DateDiff(System.String,System.String,System.String)">
+      <description>
+        <p>
+            Return the difference between 2 dates, in either minutes, seconds or years.
+            </p>
+      </description>
+      <argument name="firstDate"/>
+      <argument name="secondDate"/>
+      <argument name="diffType"/>
+    </function>
+    <function name="FormatDateTime(System.String,System.String)">
+      <description>
+        <p>
+            Formats a string to the specified formate.
+            </p>
+      </description>
+      <argument name="Date"/>
+      <argument name="Format"/>
+    </function>
+    <function name="LongDate(System.String,System.Boolean,System.String)">
+      <description>
+        <p>
+            Converts a string to Long Date and returns it as a string
+            </p>
+      </description>
+      <argument name="Date"/>
+      <argument name="WithTime"/>
+      <argument name="TimeSplitter"/>
+    </function>
+    <function name="CultureExists(System.String)">
+      <description>
+        <p>
+            Checks whether the Culture with the specified name exixts in the standard .net cultureInfo.
+            </p>
+      </description>
+      <argument name="cultureName"/>
+    </function>
+    <function name="LongDateWithDayName(System.String,System.String,System.Boolean,System.String,System.String)">
+      <description>
+        <p>
+            Converts a string to datetime in the longdate with day name format.
+            </p>
+      </description>
+      <argument name="Date"/>
+      <argument name="DaySplitter"/>
+      <argument name="WithTime"/>
+      <argument name="TimeSplitter"/>
+      <argument name="GlobalAlias"/>
+    </function>
+    <function name="LongDate(System.String)">
+      <description>
+        <p>
+            Converts a string to a Long Date and returns it as a string
+            </p>
+      </description>
+      <argument name="Date"/>
+    </function>
+    <function name="ShortDate(System.String)">
+      <description>
+        <p>
+            Converts a string to a Short Date and returns it as a string
+            </p>
+      </description>
+      <argument name="Date"/>
+    </function>
+    <function name="ShortDateWithGlobal(System.String,System.String)">
+      <description>
+        <p>
+            Converts a string to a Short Date, with a specific culture, and returns it as a string
+            </p>
+      </description>
+      <argument name="Date"/>
+      <argument name="GlobalAlias"/>
+    </function>
+    <function name="ShortDateWithTimeAndGlobal(System.String,System.String)">
+      <description>
+        <p>
+            Converts a string to a Short Date with time, with a specific culture, and returns it as a string
+            </p>
+      </description>
+      <argument name="Date"/>
+      <argument name="GlobalAlias"/>
+    </function>
+    <function name="ShortTime(System.String)">
+      <description>
+        <p>
+            Converts a datetime string to the ShortTime format.
+            </p>
+      </description>
+      <argument name="Date"/>
+    </function>
+    <function name="ShortDate(System.String,System.Boolean,System.String)">
+      <description>
+        <p>
+            Converts a datetime string to the ShortDate format.
+            </p>
+      </description>
+      <argument name="Date"/>
+      <argument name="WithTime"/>
+      <argument name="TimeSplitter"/>
+    </function>
+    <function name="ReplaceLineBreaks(System.String)">
+      <description>
+        <p>
+            Replaces text line breaks with html line breaks
+            </p>
+      </description>
+      <argument name="text"/>
+    </function>
+    <function name="RenderMacroContent(System.String,System.Int32)">
+      <description>
+        <p>
+            Renders the content of a macro. Uses the normal template umbraco macro markup as input.
+            This only works properly with xslt macros. 
+            Python and .ascx based macros will not render properly, as viewstate is not included.
+            </p>
+      </description>
+      <argument name="Text"/>
+      <argument name="PageId"/>
+    </function>
+    <function name="RenderTemplate(System.Int32,System.Int32)">
+      <description>
+        <p>
+            Renders a template.
+            </p>
+      </description>
+      <argument name="PageId"/>
+      <argument name="TemplateId"/>
+    </function>
+    <function name="RenderTemplate(System.Int32)">
+      <description>
+        <p>
+            Renders the default template for a specific page.
+            </p>
+      </description>
+      <argument name="PageId"/>
+    </function>
+    <function name="RegisterClientScriptBlock(System.String,System.String,System.Boolean)">
+      <description>
+        <p>
+            Registers the client script block.
+            </p>
+      </description>
+      <argument name="key"/>
+      <argument name="script"/>
+      <argument name="addScriptTags"/>
+    </function>
+    <function name="RegisterStyleSheetFile(System.String,System.String)">
+      <description>
+        <p>
+            Registers the client script include.
+            </p>
+      </description>
+      <argument name="key"/>
+      <argument name="url"/>
+    </function>
+    <function name="RegisterJavaScriptFile(System.String,System.String)">
+      <description>
+        <p>
+            Registers the client script include.
+            </p>
+      </description>
+      <argument name="key"/>
+      <argument name="url"/>
+    </function>
+    <function name="AddJquery">
+      <description>
+        <p>
+            Adds a reference to the jQuery javascript file from the client/ui folder using "jQuery" as a key
+            Recommended to use instead of RegisterJavaScriptFile for all nitros/packages that uses jQuery
+            </p>
+      </description>
+    </function>
+    <function name="StripHtml(System.String)">
+      <description>
+        <p>
+            Strips all html from a string.
+            </p>
+      </description>
+      <argument name="text"/>
+    </function>
+    <function name="TruncateString(System.String,System.Int32,System.String)">
+      <description>
+        <p>
+            Truncates a string if it's too long
+            </p>
+      </description>
+      <argument name="Text"/>
+      <argument name="MaxLength"/>
+      <argument name="AddString"/>
+    </function>
+    <function name="Split(System.String,System.String)">
+      <description>
+        <p>
+            Split a string into xml elements
+            </p>
+      </description>
+      <argument name="StringToSplit"/>
+      <argument name="Separator"/>
+    </function>
+    <function name="RemoveFirstParagraphTag(System.String)">
+      <description>
+        <p>
+            Removes the starting and ending paragraph tags in a string.
+            </p>
+      </description>
+      <argument name="text"/>
+    </function>
+    <function name="Replace(System.String,System.String,System.String)">
+      <description>
+        <p>
+            Replaces a specified value with a new one.
+            </p>
+      </description>
+      <argument name="text"/>
+      <argument name="oldValue"/>
+      <argument name="newValue"/>
+    </function>
+    <function name="LastIndexOf(System.String,System.String)">
+      <description>
+        <p>
+            Returns the Last index of the specified value
+            </p>
+      </description>
+      <argument name="Text"/>
+      <argument name="Value"/>
+    </function>
+    <function name="GetPreValues(System.Int32)">
+      <description>
+        <p>
+             Gets the prevalues from a umbraco DataType with the specified data type id.
+             </p>
+      </description>
+      <argument name="DataTypeId"/>
+    </function>
+    <function name="GetPreValueAsString(System.Int32)">
+      <description>
+        <p>
+            Gets the umbraco data type prevalue with the specified Id as string.
+            </p>
+      </description>
+      <argument name="Id"/>
+    </function>
+    <function name="GetDictionaryItems(System.String)">
+      <description>
+        <p>
+            Gets the dictionary item with the specified key and it's child dictionary items.
+            The language version is based on the culture of the current Url.
+            </p>
+      </description>
+      <argument name="Key"/>
+    </function>
+    <function name="GetDictionaryItem(System.String)">
+      <description>
+        <p>
+            Gets the dictionary item with the specified key.
+            </p>
+      </description>
+      <argument name="Key"/>
+    </function>
+    <function name="GetXmlNodeCurrent">
+      <description>
+        <p>
+            Gets the current page.
+            </p>
+      </description>
+    </function>
+    <function name="GetXmlNodeById(System.String)">
+      <description>
+        <p>
+            Gets the page with the specified id.
+            </p>
+      </description>
+      <argument name="id"/>
+    </function>
+    <function name="GetXmlNodeByXPath(System.String)">
+      <description>
+        <p>
+            Queries the umbraco Xml cache with the specified Xpath query
+            </p>
+      </description>
+      <argument name="xpathQuery"/>
+    </function>
+    <function name="GetXmlAll">
+      <description>
+        <p>
+            Gets the entire umbraco xml cache.
+            </p>
+      </description>
+    </function>
+    <function name="GetXmlDocument(System.String,System.Boolean)">
+      <description>
+        <p>
+            Fetches a xml file from the specified path on the server.
+            The path can be relative ("/path/to/file.xml") or absolute ("c:\folder\file.xml")
+            </p>
+      </description>
+      <argument name="Path"/>
+      <argument name="Relative"/>
+    </function>
+    <function name="GetXmlDocumentByUrl(System.String)">
+      <description>
+        <p>
+            Fetches a xml file from the specified url.
+            the Url can be a local url or even from a remote server.
+            </p>
+      </description>
+      <argument name="Url"/>
+    </function>
+    <function name="GetXmlDocumentByUrl(System.String,System.Int32)">
+      <description>
+        <p>
+            Gets the XML document by URL Cached.
+            </p>
+      </description>
+      <argument name="Url"/>
+      <argument name="CacheInSeconds"/>
+    </function>
+    <function name="QueryForNode(System.String)">
+      <description>
+        <p>
+            Returns the Xpath query for a node with the specified id
+            </p>
+      </description>
+      <argument name="id"/>
+    </function>
+    <function name="GetNodeFromLevel(System.String,System.Int32)">
+      <description>
+        <p>
+            Helper function to get a value from a comma separated string. Usefull to get
+            a node identifier from a Page's path string
+            </p>
+      </description>
+      <argument name="path"/>
+      <argument name="level"/>
+    </function>
+    <function name="SendMail(System.String,System.String,System.String,System.String,System.Boolean)">
+      <description>
+        <p>
+            Sends an e-mail using the System.Net.Mail.MailMessage object
+            </p>
+      </description>
+      <argument name="FromMail"/>
+      <argument name="ToMail"/>
+      <argument name="Subject"/>
+      <argument name="Body"/>
+      <argument name="IsHtml"/>
+    </function>
+    <function name="GetRandom(System.Int32)">
+      <description>
+        <p> 
+            These random methods are from Eli Robillards blog - kudos for the work :-)
+            http://weblogs.asp.net/erobillard/archive/2004/05/06/127374.aspx
+            
+            Get a Random object which is cached between requests. 
+            The advantage over creating the object locally is that the .Next 
+            call will always return a new value. If creating several times locally 
+            with a generated seed (like millisecond ticks), the same number can be 
+            returned. 
+            </p>
+      </description>
+    </function>
+    <function name="GetRandom">
+      <description>
+        <p> 
+            GetRandom with no parameters. 
+            </p>
+      </description>
+    </function>
+    <function name="Request(System.String)">
+      <description>
+        <p>
+            Get any value from the current Request collection. Please note that there also specialized methods for
+            Querystring, Form, Servervariables and Cookie collections
+            </p>
+      </description>
+      <argument name="key"/>
+    </function>
+    <function name="ChangeContentType(System.String)">
+      <description>
+        <p>
+            Changes the mime type of the current page.
+            </p>
+      </description>
+      <argument name="MimeType"/>
+    </function>
+    <function name="ContextKey(System.String)">
+      <description>
+        <p>
+            Get any value from the current Items collection.
+            </p>
+      </description>
+      <argument name="key"/>
+    </function>
+    <function name="GetHttpItem(System.String)">
+      <description>
+        <p>
+            Get any value from the current Http Items collection
+            </p>
+      </description>
+      <argument name="key"/>
+    </function>
+    <function name="RequestForm(System.String)">
+      <description>
+        <p>
+            Get any value from the current Form collection
+            </p>
+      </description>
+      <argument name="key"/>
+    </function>
+    <function name="RequestQueryString(System.String)">
+      <description>
+        <p>
+            Get any value from the current Querystring collection
+            </p>
+      </description>
+      <argument name="key"/>
+    </function>
+    <function name="RequestCookies(System.String)">
+      <description>
+        <p>
+            Get any value from the users cookie collection
+            </p>
+      </description>
+      <argument name="key"/>
+    </function>
+    <function name="RequestServerVariables(System.String)">
+      <description>
+        <p>
+            Get any element from the server variables collection
+            </p>
+      </description>
+      <argument name="key"/>
+    </function>
+    <function name="Session(System.String)">
+      <description>
+        <p>
+            Get any element from current user session
+            </p>
+      </description>
+      <argument name="key"/>
+    </function>
+    <function name="SessionId">
+      <description>
+        <p>
+            Returns the current ASP.NET session identifier
+            </p>
+      </description>
+    </function>
+    <function name="UrlEncode(System.String)">
+      <description>
+        <p>
+            URL-encodes a string 
+            </p>
+      </description>
+      <argument name="Text"/>
+    </function>
+    <function name="HtmlEncode(System.String)">
+      <description>
+        <p>
+            HTML-encodes a string 
+            </p>
+      </description>
+      <argument name="Text"/>
+    </function>
+    <function name="GetRelatedNodesAsXml(System.Int32)">
+      <description>
+        <p>
+            Gets the related nodes, of the node with the specified Id, as XML.
+            </p>
+      </description>
+      <argument name="NodeId"/>
+    </function>
+    <function name="PageId">
+      <description>
+        <p>
+            Returns the identifier of the current page
+            </p>
+      </description>
+    </function>
+    <function name="PageName">
+      <description>
+        <p>
+            Returns the title of the current page
+            </p>
+      </description>
+    </function>
+    <function name="PageElement(System.String)">
+      <description>
+        <p>
+            Returns any element from the currentpage including generic properties
+            </p>
+      </description>
+      <argument name="key"/>
+    </function>
+    <function name="Tidy(System.String,System.Boolean)">
+      <description>
+        <p>
+            Cleans the spified string with tidy
+            </p>
+      </description>
+      <argument name="StringToTidy"/>
+      <argument name="LiveEditing"/>
+    </function>
+    <function name="Item(System.Int32,System.String)">
+      <description>
+        <p>
+            Creates an Umbraco item for the specified field of the specified node.
+            This brings the umbraco:Item element functionality to XSLT documents,
+            which enables Live Editing of XSLT generated content.
+            </p>
+      </description>
+      <argument name="nodeId"/>
+      <argument name="fieldName"/>
+    </function>
+    <function name="Item(System.Int32,System.String,System.String)">
+      <description>
+        <p>
+            Creates an Umbraco item for the specified field of the specified node.
+            This brings the umbraco:Item element functionality to XSLT documents,
+            which enables Live Editing of XSLT generated content.
+            </p>
+      </description>
+      <argument name="nodeId"/>
+      <argument name="fieldName"/>
+      <argument name="displayValue"/>
+    </function>
+  </functions>
+</docset>
