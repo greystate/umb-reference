@@ -21,19 +21,24 @@
 	<xsl:template match="member[starts-with(@name, 'M:')]">
 		<xsl:variable name="name" select="get:function-name(@name)" />
 		<function name="{$name}">
-			<xsl:apply-templates select="summary" />
+			<description>
+				<xsl:apply-templates select="summary" />
+				<xsl:apply-templates select="returns[normalize-space()]" />
+			</description>
 			<xsl:apply-templates select="param" />
 		</function>
 	</xsl:template>
 	
+	<xsl:template match="returns">
+		<p>Returns: <xsl:value-of select="." /></p>
+	</xsl:template>
+	
 	<xsl:template match="summary">
-		<description>
-			<p><xsl:apply-templates /></p>
-		</description>
+		<p><xsl:apply-templates /></p>
 	</xsl:template>
 	
 	<xsl:template match="param">
-		<argument name="{@name}" />
+		<argument name="{@name}" required="yes" />
 	</xsl:template>
 	
 	<xsl:template match="member[not(starts-with(@name, 'M:'))] | member[contains(@name, '#ctor')]">
