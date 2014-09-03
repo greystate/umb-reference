@@ -32,8 +32,8 @@
 		<argument name="{@name}" />
 	</xsl:template>
 	
-	<xsl:template match="member[not(starts-with(@name, 'M:'))]">
-		
+	<xsl:template match="member[not(starts-with(@name, 'M:'))] | member[contains(@name, '#ctor')]">
+		<!-- We don't want output from these -->
 	</xsl:template>
 <!--	<functions>
 		<function name="translate">
