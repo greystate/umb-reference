@@ -180,7 +180,7 @@ So you definitely shouldn't be editing it, or you'll end up sad...
 	</xsl:template>
 
 	<xsl:template name="fork-banner">
-		<a href="https://github.com/greystate/XSLT-Reference#readme">
+		<a href="https://github.com/greystate/umb-reference#readme">
 			<img
 				class="forkme"
 				src="http://aral.github.com/fork-me-on-github-retina-ribbons/right-orange@2x.png"
@@ -190,7 +190,7 @@ So you definitely shouldn't be editing it, or you'll end up sad...
 	</xsl:template>
 	
 	<xsl:template name="feed-link">
-		<a class="feed" href="dash-feed://http%3A%2F%2Fpimpmyxslt.com%2Freference%2Fxslt-quick-reference.xml" title="Subscribe to feed for Dash here">Dash Feed</a>
+		<a class="feed" href="dash-feed://http%3A%2F%2Fgreystate.dk%2Fresources%2Fumbraco%2Freference%2Fumbraco-library-quick-reference.xml" title="Subscribe to feed for Dash here">Dash Feed</a>
 	</xsl:template>
 	
 	<xsl:template name="toc-link">
