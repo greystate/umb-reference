@@ -138,8 +138,8 @@ input[disabled] {
 input[type="checkbox"],
 input[type="radio"] {
   -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
   /* 1 */
   padding: 0;
   /* 2 */
@@ -182,11 +182,11 @@ table {
 @media only screen and (max-width: 680px) {
   .forkme {
     -webkit-transform: scale(0.6);
-    -ms-transform: scale(0.6);
-    transform: scale(0.6);
+        -ms-transform: scale(0.6);
+            transform: scale(0.6);
     -webkit-transform-origin: 100% 0;
-    -ms-transform-origin: 100% 0;
-    transform-origin: 100% 0;
+        -ms-transform-origin: 100% 0;
+            transform-origin: 100% 0;
   }
 }
 /**
@@ -230,7 +230,7 @@ pre[class*="language-"] {
   border: 0.3em solid #7a6652;
   border-radius: .5em;
   -webkit-box-shadow: 1px 1px .5em black inset;
-  box-shadow: 1px 1px .5em black inset;
+          box-shadow: 1px 1px .5em black inset;
 }
 /* Inline code */
 :not(pre) > code[class*="language-"] {
@@ -238,7 +238,7 @@ pre[class*="language-"] {
   border-radius: .3em;
   border: 0.13em solid #7a6652;
   -webkit-box-shadow: 1px 1px 0.3em -0.1em #000000 inset;
-  box-shadow: 1px 1px 0.3em -0.1em #000000 inset;
+          box-shadow: 1px 1px 0.3em -0.1em #000000 inset;
 }
 .token.comment,
 .token.prolog,
@@ -308,7 +308,7 @@ body {
   }
 }
 #xslt-elements > h1,
-#xpath-functions > h1 {
+#extension-functions > h1 {
   margin: 1em 0 0.4em 0.4em;
   border-bottom: 2px solid;
 }
@@ -438,7 +438,7 @@ li.attr-ref:before {
 .function:target {
   border-radius: 6px;
   -webkit-box-shadow: 0 10px 8px -10px rgba(0, 0, 0, 0.8), 0 -10px 8px -10px rgba(0, 0, 0, 0.8);
-  box-shadow: 0 10px 8px -10px rgba(0, 0, 0, 0.8), 0 -10px 8px -10px rgba(0, 0, 0, 0.8);
+          box-shadow: 0 10px 8px -10px rgba(0, 0, 0, 0.8), 0 -10px 8px -10px rgba(0, 0, 0, 0.8);
   border: solid rgba(0, 0, 0, 0.4);
   border-width: 1px 0;
   background: rgba(255, 255, 255, 0.6);
@@ -494,7 +494,7 @@ li.attr-ref:before {
   opacity: 0.4;
 }
 #toc:target #xslt-elements,
-#toc:target #xpath-functions {
+#toc:target #extension-functions {
   width: 45%;
   float: left;
 }
@@ -517,8 +517,8 @@ li.attr-ref:before {
   left: 0;
   top: 50%;
   -webkit-transform: translateY(-4px);
-  -ms-transform: translateY(-4px);
-  transform: translateY(-4px);
+      -ms-transform: translateY(-4px);
+          transform: translateY(-4px);
 }
 #toc:target .element .desc,
 #toc:target .element .content {
