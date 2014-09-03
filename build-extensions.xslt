@@ -11,7 +11,7 @@
 	<xsl:output method="xml" indent="yes" omit-xml-declaration="no" />
 
 	<xsl:template match="doc">
-		<docset name="Umbraco Library Quick Reference" version="0.1.1">
+		<docset name="Umbraco Library Quick Reference" version="0.2.0">
 			<functions>
 				<xsl:apply-templates select="members/member" />
 			</functions>

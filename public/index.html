@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Umbraco Library Quick Reference — v0.1.1</title>
+<title>Umbraco Library Quick Reference — v0.2.0</title>
 <link rel="stylesheet" href="css/docset.css">
 <script src="scripts/application.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
 <!--
@@ -18,17 +18,18 @@ So you definitely shouldn't be editing it, or you'll end up sad...
             Adds a reference to the jQuery javascript file from the client/ui folder using "jQuery" as a key
             Recommended to use instead of RegisterJavaScriptFile for all nitros/packages that uses jQuery
             </p>
-      </div></section><section class="function" id="ChangeContentType(System.String)"><h1><a href="#ChangeContentType(System.String)">ChangeContentType(System.String)(<span class="arglist"><span class="arg-ref">[MimeType]</span></span>)</a></h1>
+      </div></section><section class="function" id="ChangeContentType"><h1><a href="#ChangeContentType">ChangeContentType(<span class="arglist"><span class="arg-ref required">MimeType</span></span>)</a></h1>
 <div class="desc">
         <p>
             Changes the mime type of the current page.
             </p>
-      </div></section><section class="function" id="ContextKey(System.String)"><h1><a href="#ContextKey(System.String)">ContextKey(System.String)(<span class="arglist"><span class="arg-ref">[key]</span></span>)</a></h1>
+      </div></section><section class="function" id="ContextKey"><h1><a href="#ContextKey">ContextKey(<span class="arglist"><span class="arg-ref required">key</span></span>)</a></h1>
 <div class="desc">
         <p>
             Get any value from the current Items collection.
             </p>
-      </div></section><section class="function" id="CultureExists(System.String)"><h1><a href="#CultureExists(System.String)">CultureExists(System.String)(<span class="arglist"><span class="arg-ref">[cultureName]</span></span>)</a></h1>
+        <p>Returns: A string with the value of the Items element</p>
+      </div></section><section class="function" id="CultureExists"><h1><a href="#CultureExists">CultureExists(<span class="arglist"><span class="arg-ref required">cultureName</span></span>)</a></h1>
 <div class="desc">
         <p>
             Checks whether the Culture with the specified name exixts in the standard .net cultureInfo.
@@ -38,73 +39,91 @@ So you definitely shouldn't be editing it, or you'll end up sad...
         <p>
             Get the current date
             </p>
-      </div></section><section class="function" id="DateAdd(System.String,System.String,System.Int32)"><h1><a href="#DateAdd(System.String,System.String,System.Int32)">DateAdd(System.String,System.String,System.Int32)(<span class="arglist"><span class="arg-ref">[Date]</span>, <span class="arg-ref">[AddType]</span>, <span class="arg-ref">[add]</span></span>)</a></h1>
+        <p>Returns: Current date i xml format (ToString("s"))</p>
+      </div></section><section class="function" id="DateAdd"><h1><a href="#DateAdd">DateAdd(<span class="arglist"><span class="arg-ref required">Date</span>, <span class="arg-ref required">AddType</span>, <span class="arg-ref required">add</span></span>)</a></h1>
 <div class="desc">
         <p>
             Add a value to a date
             </p>
-      </div></section><section class="function" id="DateAddWithDateTimeObject(System.DateTime,System.String,System.Int32)"><h1><a href="#DateAddWithDateTimeObject(System.DateTime,System.String,System.Int32)">DateAddWithDateTimeObject(System.DateTime,System.String,System.Int32)(<span class="arglist"><span class="arg-ref">[Date]</span>, <span class="arg-ref">[AddType]</span>, <span class="arg-ref">[add]</span></span>)</a></h1>
+        <p>Returns: A date in xml format (ToString("s"))</p>
+      </div></section><section class="function" id="DateAddWithDateTimeObject"><h1><a href="#DateAddWithDateTimeObject">DateAddWithDateTimeObject(<span class="arglist"><span class="arg-ref required">Date</span>, <span class="arg-ref required">AddType</span>, <span class="arg-ref required">add</span></span>)</a></h1>
 <div class="desc">
         <p>
             Add a value to a date. Similar to the other overload, but uses a datetime object instead of a string
             </p>
-      </div></section><section class="function" id="DateDiff(System.String,System.String,System.String)"><h1><a href="#DateDiff(System.String,System.String,System.String)">DateDiff(System.String,System.String,System.String)(<span class="arglist"><span class="arg-ref">[firstDate]</span>, <span class="arg-ref">[secondDate]</span>, <span class="arg-ref">[diffType]</span></span>)</a></h1>
+        <p>Returns: A date in xml format (ToString("s"))</p>
+      </div></section><section class="function" id="DateDiff"><h1><a href="#DateDiff">DateDiff(<span class="arglist"><span class="arg-ref required">firstDate</span>, <span class="arg-ref required">secondDate</span>, <span class="arg-ref required">diffType</span></span>)</a></h1>
 <div class="desc">
         <p>
             Return the difference between 2 dates, in either minutes, seconds or years.
             </p>
-      </div></section><section class="function" id="DateGreaterThan(System.String,System.String)"><h1><a href="#DateGreaterThan(System.String,System.String)">DateGreaterThan(System.String,System.String)(<span class="arglist"><span class="arg-ref">[firstDate]</span>, <span class="arg-ref">[secondDate]</span></span>)</a></h1>
+        <p>Returns: A timespan as a integer</p>
+      </div></section><section class="function" id="DateGreaterThan"><h1><a href="#DateGreaterThan">DateGreaterThan(<span class="arglist"><span class="arg-ref required">firstDate</span>, <span class="arg-ref required">secondDate</span></span>)</a></h1>
 <div class="desc">
         <p>
             Compare two dates
             </p>
-      </div></section><section class="function" id="DateGreaterThanOrEqual(System.String,System.String)"><h1><a href="#DateGreaterThanOrEqual(System.String,System.String)">DateGreaterThanOrEqual(System.String,System.String)(<span class="arglist"><span class="arg-ref">[firstDate]</span>, <span class="arg-ref">[secondDate]</span></span>)</a></h1>
+        <p>Returns: True if the first date is greater than the second date</p>
+      </div></section><section class="function" id="DateGreaterThanOrEqual"><h1><a href="#DateGreaterThanOrEqual">DateGreaterThanOrEqual(<span class="arglist"><span class="arg-ref required">firstDate</span>, <span class="arg-ref required">secondDate</span></span>)</a></h1>
 <div class="desc">
         <p>
             Compare two dates
             </p>
-      </div></section><section class="function" id="DateGreaterThanOrEqualToday(System.String)"><h1><a href="#DateGreaterThanOrEqualToday(System.String)">DateGreaterThanOrEqualToday(System.String)(<span class="arglist"><span class="arg-ref">[firstDate]</span></span>)</a></h1>
+        <p>Returns: True if the first date is greater than or equal the second date</p>
+      </div></section><section class="function" id="DateGreaterThanOrEqualToday"><h1><a href="#DateGreaterThanOrEqualToday">DateGreaterThanOrEqualToday(<span class="arglist"><span class="arg-ref required">firstDate</span></span>)</a></h1>
 <div class="desc">
         <p>
             Check if a date is greater than or equal today
             </p>
-      </div></section><section class="function" id="DateGreaterThanToday(System.String)"><h1><a href="#DateGreaterThanToday(System.String)">DateGreaterThanToday(System.String)(<span class="arglist"><span class="arg-ref">[firstDate]</span></span>)</a></h1>
+        <p>Returns: True if the date is greater that or equal today (ie. at least today or the day of tomorrow)</p>
+      </div></section><section class="function" id="DateGreaterThanToday"><h1><a href="#DateGreaterThanToday">DateGreaterThanToday(<span class="arglist"><span class="arg-ref required">firstDate</span></span>)</a></h1>
 <div class="desc">
         <p>
             Check if a date is greater than today
             </p>
-      </div></section><section class="function" id="FormatDateTime(System.String,System.String)"><h1><a href="#FormatDateTime(System.String,System.String)">FormatDateTime(System.String,System.String)(<span class="arglist"><span class="arg-ref">[Date]</span>, <span class="arg-ref">[Format]</span></span>)</a></h1>
+        <p>Returns: True if the date is greater that today (ie. at least the day of tomorrow)</p>
+      </div></section><section class="function" id="FormatDateTime"><h1><a href="#FormatDateTime">FormatDateTime(<span class="arglist"><span class="arg-ref required">Date</span>, <span class="arg-ref required">Format</span></span>)</a></h1>
 <div class="desc">
         <p>
             Formats a string to the specified formate.
             </p>
-      </div></section><section class="function" id="GetCurrentDomains(System.Int32)"><h1><a href="#GetCurrentDomains(System.Int32)">GetCurrentDomains(System.Int32)(<span class="arglist"><span class="arg-ref">[NodeId]</span></span>)</a></h1>
+        <p>Returns: A date in the new format as a string</p>
+      </div></section><section class="function" id="GetCurrentDomains"><h1><a href="#GetCurrentDomains">GetCurrentDomains(<span class="arglist"><span class="arg-ref required">NodeId</span></span>)</a></h1>
 <div class="desc">
         <p>
             Checks with the Assigned domains settings and retuns an array the the Domains matching the node
             </p>
+        <p>Returns: A Domain array with all the Domains that matches the nodeId</p>
       </div></section><section class="function" id="GetCurrentMember"><h1><a href="#GetCurrentMember">GetCurrentMember(<span class="arglist"></span>)</a></h1>
 <div class="desc">
         <p>
             Get the current member as an xml node
             </p>
-      </div></section><section class="function" id="GetDictionaryItem(System.String)"><h1><a href="#GetDictionaryItem(System.String)">GetDictionaryItem(System.String)(<span class="arglist"><span class="arg-ref">[Key]</span></span>)</a></h1>
+        <p>Returns: Look in documentation for umbraco.library.GetMember(MemberId) for more information</p>
+      </div></section><section class="function" id="GetDictionaryItem"><h1><a href="#GetDictionaryItem">GetDictionaryItem(<span class="arglist"><span class="arg-ref required">Key</span></span>)</a></h1>
 <div class="desc">
         <p>
             Gets the dictionary item with the specified key.
             </p>
-      </div></section><section class="function" id="GetDictionaryItems(System.String)"><h1><a href="#GetDictionaryItems(System.String)">GetDictionaryItems(System.String)(<span class="arglist"><span class="arg-ref">[Key]</span></span>)</a></h1>
+        <p>Returns: A dictionary items value as a string.</p>
+      </div></section><section class="function" id="GetDictionaryItems"><h1><a href="#GetDictionaryItems">GetDictionaryItems(<span class="arglist"><span class="arg-ref required">Key</span></span>)</a></h1>
 <div class="desc">
         <p>
             Gets the dictionary item with the specified key and it's child dictionary items.
             The language version is based on the culture of the current Url.
             </p>
-      </div></section><section class="function" id="GetHttpItem(System.String)"><h1><a href="#GetHttpItem(System.String)">GetHttpItem(System.String)(<span class="arglist"><span class="arg-ref">[key]</span></span>)</a></h1>
+        <p>Returns: A XpathNodeIterator in the format:
+            
+                [dictionaryItemValue]
+            
+            </p>
+      </div></section><section class="function" id="GetHttpItem"><h1><a href="#GetHttpItem">GetHttpItem(<span class="arglist"><span class="arg-ref required">key</span></span>)</a></h1>
 <div class="desc">
         <p>
             Get any value from the current Http Items collection
             </p>
-      </div></section><section class="function" id="GetItem(System.Int32,System.String)"><h1><a href="#GetItem(System.Int32,System.String)">GetItem(System.Int32,System.String)(<span class="arglist"><span class="arg-ref">[nodeID]</span>, <span class="arg-ref">[alias]</span></span>)</a></h1>
+        <p>Returns: A string with the value of the Requested element</p>
+      </div></section><section class="function" id="GetItem"><h1><a href="#GetItem">GetItem(<span class="arglist"><span class="arg-ref required">nodeID</span>, <span class="arg-ref required">alias</span></span>)</a></h1>
 <div class="desc">
         <p>
             Returns a string with the data from the given element of a node. Both elements (data-fields)
@@ -112,7 +131,8 @@ So you definitely shouldn't be editing it, or you'll end up sad...
             getItem(1, nodeName) will return a string with the name of the node with id=1 even though
             nodeName is a property and not an element (data-field).
             </p>
-      </div></section><section class="function" id="GetItem(System.String)"><h1><a href="#GetItem(System.String)">GetItem(System.String)(<span class="arglist"><span class="arg-ref">[alias]</span></span>)</a></h1>
+        <p>Returns: Returns a string with the data from the given element of a node</p>
+      </div></section><section class="function" id="GetItem"><h1><a href="#GetItem">GetItem(<span class="arglist"><span class="arg-ref required">alias</span></span>)</a></h1>
 <div class="desc">
         <p>
             Returns a string with the data from the given element of the current node. Both elements (data-fields)
@@ -120,48 +140,56 @@ So you definitely shouldn't be editing it, or you'll end up sad...
             getItem(nodeName) will return a string with the name of the current node/page even though
             nodeName is a property and not an element (data-field).
             </p>
-      </div></section><section class="function" id="GetMedia(System.Int32,System.Boolean)"><h1><a href="#GetMedia(System.Int32,System.Boolean)">GetMedia(System.Int32,System.Boolean)(<span class="arglist"><span class="arg-ref">[MediaId]</span>, <span class="arg-ref">[Deep]</span></span>)</a></h1>
+      </div></section><section class="function" id="GetMedia"><h1><a href="#GetMedia">GetMedia(<span class="arglist"><span class="arg-ref required">MediaId</span>, <span class="arg-ref required">Deep</span></span>)</a></h1>
 <div class="desc">
         <p>
             Get a media object as an xml object
             </p>
-      </div></section><section class="function" id="GetMember(System.Int32)"><h1><a href="#GetMember(System.Int32)">GetMember(System.Int32)(<span class="arglist"><span class="arg-ref">[MemberId]</span></span>)</a></h1>
+        <p>Returns: An umbraco xml node of the media (same format as a document node)</p>
+      </div></section><section class="function" id="GetMember"><h1><a href="#GetMember">GetMember(<span class="arglist"><span class="arg-ref required">MemberId</span></span>)</a></h1>
 <div class="desc">
         <p>
             Get a member as an xml object
             </p>
-      </div></section><section class="function" id="GetMemberName(System.Int32)"><h1><a href="#GetMemberName(System.Int32)">GetMemberName(System.Int32)(<span class="arglist"><span class="arg-ref">[MemberId]</span></span>)</a></h1>
+        <p>Returns: An umbraco xml node of the member (same format as a document node), but with two additional attributes on the "node" element:
+            "email" and "loginName".
+            </p>
+      </div></section><section class="function" id="GetMemberName"><h1><a href="#GetMemberName">GetMemberName(<span class="arglist"><span class="arg-ref required">MemberId</span></span>)</a></h1>
 <div class="desc">
         <p>
             Returns the Member Name from an umbraco member object
             </p>
-      </div></section><section class="function" id="GetNodeFromLevel(System.String,System.Int32)"><h1><a href="#GetNodeFromLevel(System.String,System.Int32)">GetNodeFromLevel(System.String,System.Int32)(<span class="arglist"><span class="arg-ref">[path]</span>, <span class="arg-ref">[level]</span></span>)</a></h1>
+        <p>Returns: The Member name matching the MemberId, an empty string is member isn't found</p>
+      </div></section><section class="function" id="GetNodeFromLevel"><h1><a href="#GetNodeFromLevel">GetNodeFromLevel(<span class="arglist"><span class="arg-ref required">path</span>, <span class="arg-ref required">level</span></span>)</a></h1>
 <div class="desc">
         <p>
             Helper function to get a value from a comma separated string. Usefull to get
             a node identifier from a Page's path string
             </p>
-      </div></section><section class="function" id="GetPreValueAsString(System.Int32)"><h1><a href="#GetPreValueAsString(System.Int32)">GetPreValueAsString(System.Int32)(<span class="arglist"><span class="arg-ref">[Id]</span></span>)</a></h1>
+        <p>Returns: A string with the value of the index</p>
+      </div></section><section class="function" id="GetPreValueAsString"><h1><a href="#GetPreValueAsString">GetPreValueAsString(<span class="arglist"><span class="arg-ref required">Id</span></span>)</a></h1>
 <div class="desc">
         <p>
             Gets the umbraco data type prevalue with the specified Id as string.
             </p>
-      </div></section><section class="function" id="GetPreValues(System.Int32)"><h1><a href="#GetPreValues(System.Int32)">GetPreValues(System.Int32)(<span class="arglist"><span class="arg-ref">[DataTypeId]</span></span>)</a></h1>
+        <p>Returns: Returns the prevalue as a string</p>
+      </div></section><section class="function" id="GetPreValues"><h1><a href="#GetPreValues">GetPreValues(<span class="arglist"><span class="arg-ref required">DataTypeId</span></span>)</a></h1>
 <div class="desc">
         <p>
              Gets the prevalues from a umbraco DataType with the specified data type id.
              </p>
-      </div></section><section class="function" id="GetPropertyTypeName(System.String,System.String)"><h1><a href="#GetPropertyTypeName(System.String,System.String)">GetPropertyTypeName(System.String,System.String)(<span class="arglist"><span class="arg-ref">[ContentTypeAlias]</span>, <span class="arg-ref">[PropertyTypeAlias]</span></span>)</a></h1>
+        <p>Returns: Returns the prevalues as a XPathNodeIterator in the format:
+                 
+                     [value]
+                  
+            </p>
+      </div></section><section class="function" id="GetPropertyTypeName"><h1><a href="#GetPropertyTypeName">GetPropertyTypeName(<span class="arglist"><span class="arg-ref required">ContentTypeAlias</span>, <span class="arg-ref required">PropertyTypeAlias</span></span>)</a></h1>
 <div class="desc">
         <p>
             Returns that name of a generic property
             </p>
+        <p>Returns: A string with the name. If nothing matches the alias, an empty string is returned</p>
       </div></section><section class="function" id="GetRandom"><h1><a href="#GetRandom">GetRandom(<span class="arglist"></span>)</a></h1>
-<div class="desc">
-        <p> 
-            GetRandom with no parameters. 
-            </p>
-      </div></section><section class="function" id="GetRandom(System.Int32)"><h1><a href="#GetRandom(System.Int32)">GetRandom(System.Int32)(<span class="arglist"></span>)</a></h1>
 <div class="desc">
         <p> 
             These random methods are from Eli Robillards blog - kudos for the work :-)
@@ -173,161 +201,199 @@ So you definitely shouldn't be editing it, or you'll end up sad...
             with a generated seed (like millisecond ticks), the same number can be 
             returned. 
             </p>
-      </div></section><section class="function" id="GetRelatedNodesAsXml(System.Int32)"><h1><a href="#GetRelatedNodesAsXml(System.Int32)">GetRelatedNodesAsXml(System.Int32)(<span class="arglist"><span class="arg-ref">[NodeId]</span></span>)</a></h1>
+        <p>Returns: A Random object which is cached between calls.</p>
+      </div></section><section class="function" id="GetRandom"><h1><a href="#GetRandom">GetRandom(<span class="arglist"></span>)</a></h1>
+<div class="desc">
+        <p> 
+            GetRandom with no parameters. 
+            </p>
+        <p>Returns: A Random object which is cached between calls.</p>
+      </div></section><section class="function" id="GetRelatedNodesAsXml"><h1><a href="#GetRelatedNodesAsXml">GetRelatedNodesAsXml(<span class="arglist"><span class="arg-ref required">NodeId</span></span>)</a></h1>
 <div class="desc">
         <p>
             Gets the related nodes, of the node with the specified Id, as XML.
+            </p>
+        <p>Returns: The related nodes as a XpathNodeIterator in the format:
+                
+                    
+                        [standard umbraco node Xml]
+                    
+                
             </p>
       </div></section><section class="function" id="GetUmbracoHelper"><h1><a href="#GetUmbracoHelper">GetUmbracoHelper(<span class="arglist"></span>)</a></h1>
 <div class="desc">
         <p>
             Returns a new UmbracoHelper so that we can start moving the logic from some of these methods to it
             </p>
-      </div></section><section class="function" id="GetWeekDay(System.String)"><h1><a href="#GetWeekDay(System.String)">GetWeekDay(System.String)(<span class="arglist"><span class="arg-ref">[Date]</span></span>)</a></h1>
+      </div></section><section class="function" id="GetWeekDay"><h1><a href="#GetWeekDay">GetWeekDay(<span class="arglist"><span class="arg-ref required">Date</span></span>)</a></h1>
 <div class="desc">
         <p>
             Get the day of week from a date matching the current culture settings
             </p>
+        <p>Returns: A string with the DayOfWeek matching the current contexts culture settings</p>
       </div></section><section class="function" id="GetXmlAll"><h1><a href="#GetXmlAll">GetXmlAll(<span class="arglist"></span>)</a></h1>
 <div class="desc">
         <p>
             Gets the entire umbraco xml cache.
             </p>
-      </div></section><section class="function" id="GetXmlDocument(System.String,System.Boolean)"><h1><a href="#GetXmlDocument(System.String,System.Boolean)">GetXmlDocument(System.String,System.Boolean)(<span class="arglist"><span class="arg-ref">[Path]</span>, <span class="arg-ref">[Relative]</span></span>)</a></h1>
+        <p>Returns: Returns the entire umbraco Xml cache as a XPathNodeIterator</p>
+      </div></section><section class="function" id="GetXmlDocument"><h1><a href="#GetXmlDocument">GetXmlDocument(<span class="arglist"><span class="arg-ref required">Path</span>, <span class="arg-ref required">Relative</span></span>)</a></h1>
 <div class="desc">
         <p>
             Fetches a xml file from the specified path on the server.
             The path can be relative ("/path/to/file.xml") or absolute ("c:\folder\file.xml")
             </p>
-      </div></section><section class="function" id="GetXmlDocumentByUrl(System.String)"><h1><a href="#GetXmlDocumentByUrl(System.String)">GetXmlDocumentByUrl(System.String)(<span class="arglist"><span class="arg-ref">[Url]</span></span>)</a></h1>
+        <p>Returns: The xml file as a XpathNodeIterator</p>
+      </div></section><section class="function" id="GetXmlDocumentByUrl"><h1><a href="#GetXmlDocumentByUrl">GetXmlDocumentByUrl(<span class="arglist"><span class="arg-ref required">Url</span></span>)</a></h1>
 <div class="desc">
         <p>
             Fetches a xml file from the specified url.
             the Url can be a local url or even from a remote server.
             </p>
-      </div></section><section class="function" id="GetXmlDocumentByUrl(System.String,System.Int32)"><h1><a href="#GetXmlDocumentByUrl(System.String,System.Int32)">GetXmlDocumentByUrl(System.String,System.Int32)(<span class="arglist"><span class="arg-ref">[Url]</span>, <span class="arg-ref">[CacheInSeconds]</span></span>)</a></h1>
+        <p>Returns: The xml file as a XpathNodeIterator</p>
+      </div></section><section class="function" id="GetXmlDocumentByUrl"><h1><a href="#GetXmlDocumentByUrl">GetXmlDocumentByUrl(<span class="arglist"><span class="arg-ref required">Url</span>, <span class="arg-ref required">CacheInSeconds</span></span>)</a></h1>
 <div class="desc">
         <p>
             Gets the XML document by URL Cached.
             </p>
-      </div></section><section class="function" id="GetXmlNodeById(System.String)"><h1><a href="#GetXmlNodeById(System.String)">GetXmlNodeById(System.String)(<span class="arglist"><span class="arg-ref">[id]</span></span>)</a></h1>
+      </div></section><section class="function" id="GetXmlNodeById"><h1><a href="#GetXmlNodeById">GetXmlNodeById(<span class="arglist"><span class="arg-ref required">id</span></span>)</a></h1>
 <div class="desc">
         <p>
             Gets the page with the specified id.
             </p>
-      </div></section><section class="function" id="GetXmlNodeByXPath(System.String)"><h1><a href="#GetXmlNodeByXPath(System.String)">GetXmlNodeByXPath(System.String)(<span class="arglist"><span class="arg-ref">[xpathQuery]</span></span>)</a></h1>
+        <p>Returns: Returns the node with the specified id as xml in the form of a XPathNodeIterator</p>
+      </div></section><section class="function" id="GetXmlNodeByXPath"><h1><a href="#GetXmlNodeByXPath">GetXmlNodeByXPath(<span class="arglist"><span class="arg-ref required">xpathQuery</span></span>)</a></h1>
 <div class="desc">
         <p>
             Queries the umbraco Xml cache with the specified Xpath query
             </p>
+        <p>Returns: Returns nodes matching the xpath query as a XpathNodeIterator</p>
       </div></section><section class="function" id="GetXmlNodeCurrent"><h1><a href="#GetXmlNodeCurrent">GetXmlNodeCurrent(<span class="arglist"></span>)</a></h1>
 <div class="desc">
         <p>
             Gets the current page.
             </p>
-      </div></section><section class="function" id="HasAccess(System.Int32,System.String)"><h1><a href="#HasAccess(System.Int32,System.String)">HasAccess(System.Int32,System.String)(<span class="arglist"><span class="arg-ref">[NodeId]</span>, <span class="arg-ref">[Path]</span></span>)</a></h1>
+        <p>Returns: An XpathNodeIterator containing the current page as Xml.</p>
+      </div></section><section class="function" id="HasAccess"><h1><a href="#HasAccess">HasAccess(<span class="arglist"><span class="arg-ref required">NodeId</span>, <span class="arg-ref required">Path</span></span>)</a></h1>
 <div class="desc">
         <p>
             Check if the current user has access to a document
             </p>
-      </div></section><section class="function" id="HtmlEncode(System.String)"><h1><a href="#HtmlEncode(System.String)">HtmlEncode(System.String)(<span class="arglist"><span class="arg-ref">[Text]</span></span>)</a></h1>
+        <p>Returns: True if the current user has access or if the current document isn't protected</p>
+      </div></section><section class="function" id="HtmlEncode"><h1><a href="#HtmlEncode">HtmlEncode(<span class="arglist"><span class="arg-ref required">Text</span></span>)</a></h1>
 <div class="desc">
         <p>
             HTML-encodes a string 
             </p>
+        <p>Returns: A HTML-encoded string</p>
       </div></section><section class="function" id="IsLoggedOn"><h1><a href="#IsLoggedOn">IsLoggedOn(<span class="arglist"></span>)</a></h1>
 <div class="desc">
         <p>
             Whether or not the current user is logged in (as a member)
             </p>
-      </div></section><section class="function" id="IsProtected(System.Int32,System.String)"><h1><a href="#IsProtected(System.Int32,System.String)">IsProtected(System.Int32,System.String)(<span class="arglist"><span class="arg-ref">[DocumentId]</span>, <span class="arg-ref">[Path]</span></span>)</a></h1>
+        <p>Returns: True is the current user is logged in</p>
+      </div></section><section class="function" id="IsProtected"><h1><a href="#IsProtected">IsProtected(<span class="arglist"><span class="arg-ref required">DocumentId</span>, <span class="arg-ref required">Path</span></span>)</a></h1>
 <div class="desc">
         <p>
             Check if a document object is protected by the "Protect Pages" functionality in umbraco
             </p>
-      </div></section><section class="function" id="Item(System.Int32,System.String)"><h1><a href="#Item(System.Int32,System.String)">Item(System.Int32,System.String)(<span class="arglist"><span class="arg-ref">[nodeId]</span>, <span class="arg-ref">[fieldName]</span></span>)</a></h1>
+        <p>Returns: True if the document object is protected</p>
+      </div></section><section class="function" id="Item"><h1><a href="#Item">Item(<span class="arglist"><span class="arg-ref required">nodeId</span>, <span class="arg-ref required">fieldName</span></span>)</a></h1>
 <div class="desc">
         <p>
             Creates an Umbraco item for the specified field of the specified node.
             This brings the umbraco:Item element functionality to XSLT documents,
             which enables Live Editing of XSLT generated content.
             </p>
-      </div></section><section class="function" id="Item(System.Int32,System.String,System.String)"><h1><a href="#Item(System.Int32,System.String,System.String)">Item(System.Int32,System.String,System.String)(<span class="arglist"><span class="arg-ref">[nodeId]</span>, <span class="arg-ref">[fieldName]</span>, <span class="arg-ref">[displayValue]</span></span>)</a></h1>
+        <p>Returns: An Umbraco item.</p>
+      </div></section><section class="function" id="Item"><h1><a href="#Item">Item(<span class="arglist"><span class="arg-ref required">nodeId</span>, <span class="arg-ref required">fieldName</span>, <span class="arg-ref required">displayValue</span></span>)</a></h1>
 <div class="desc">
         <p>
             Creates an Umbraco item for the specified field of the specified node.
             This brings the umbraco:Item element functionality to XSLT documents,
             which enables Live Editing of XSLT generated content.
             </p>
-      </div></section><section class="function" id="JsonToXml(System.String)"><h1><a href="#JsonToXml(System.String)">JsonToXml(System.String)(<span class="arglist"><span class="arg-ref">[json]</span></span>)</a></h1>
+        <p>Returns: An Umbraco item.</p>
+      </div></section><section class="function" id="JsonToXml"><h1><a href="#JsonToXml">JsonToXml(<span class="arglist"><span class="arg-ref required">json</span></span>)</a></h1>
 <div class="desc">
         <p>
             This will convert a json structure to xml for use in xslt
             </p>
-      </div></section><section class="function" id="LastIndexOf(System.String,System.String)"><h1><a href="#LastIndexOf(System.String,System.String)">LastIndexOf(System.String,System.String)(<span class="arglist"><span class="arg-ref">[Text]</span>, <span class="arg-ref">[Value]</span></span>)</a></h1>
+      </div></section><section class="function" id="LastIndexOf"><h1><a href="#LastIndexOf">LastIndexOf(<span class="arglist"><span class="arg-ref required">Text</span>, <span class="arg-ref required">Value</span></span>)</a></h1>
 <div class="desc">
         <p>
             Returns the Last index of the specified value
             </p>
-      </div></section><section class="function" id="LongDate(System.String)"><h1><a href="#LongDate(System.String)">LongDate(System.String)(<span class="arglist"><span class="arg-ref">[Date]</span></span>)</a></h1>
-<div class="desc">
-        <p>
-            Converts a string to a Long Date and returns it as a string
-            </p>
-      </div></section><section class="function" id="LongDate(System.String,System.Boolean,System.String)"><h1><a href="#LongDate(System.String,System.Boolean,System.String)">LongDate(System.String,System.Boolean,System.String)(<span class="arglist"><span class="arg-ref">[Date]</span>, <span class="arg-ref">[WithTime]</span>, <span class="arg-ref">[TimeSplitter]</span></span>)</a></h1>
+        <p>Returns: Return the last index of a value as a integer </p>
+      </div></section><section class="function" id="LongDate"><h1><a href="#LongDate">LongDate(<span class="arglist"><span class="arg-ref required">Date</span>, <span class="arg-ref required">WithTime</span>, <span class="arg-ref required">TimeSplitter</span></span>)</a></h1>
 <div class="desc">
         <p>
             Converts a string to Long Date and returns it as a string
             </p>
-      </div></section><section class="function" id="LongDateWithDayName(System.String,System.String,System.Boolean,System.String,System.String)"><h1><a href="#LongDateWithDayName(System.String,System.String,System.Boolean,System.String,System.String)">LongDateWithDayName(System.String,System.String,System.Boolean,System.String,System.String)(<span class="arglist"><span class="arg-ref">[Date]</span>, <span class="arg-ref">[DaySplitter]</span>, <span class="arg-ref">[WithTime]</span>, <span class="arg-ref">[TimeSplitter]</span>, <span class="arg-ref">[GlobalAlias]</span></span>)</a></h1>
+        <p>Returns: A Long Date as a string.</p>
+      </div></section><section class="function" id="LongDate"><h1><a href="#LongDate">LongDate(<span class="arglist"><span class="arg-ref required">Date</span></span>)</a></h1>
+<div class="desc">
+        <p>
+            Converts a string to a Long Date and returns it as a string
+            </p>
+        <p>Returns: A Long Date as a string.</p>
+      </div></section><section class="function" id="LongDateWithDayName"><h1><a href="#LongDateWithDayName">LongDateWithDayName(<span class="arglist"><span class="arg-ref required">Date</span>, <span class="arg-ref required">DaySplitter</span>, <span class="arg-ref required">WithTime</span>, <span class="arg-ref required">TimeSplitter</span>, <span class="arg-ref required">GlobalAlias</span></span>)</a></h1>
 <div class="desc">
         <p>
             Converts a string to datetime in the longdate with day name format.
             </p>
-      </div></section><section class="function" id="NiceUrl(System.Int32)"><h1><a href="#NiceUrl(System.Int32)">NiceUrl(System.Int32)(<span class="arglist"><span class="arg-ref">[nodeID]</span></span>)</a></h1>
+        <p>Returns: A datetime in the longdate formate with day name, as a string</p>
+      </div></section><section class="function" id="NiceUrl"><h1><a href="#NiceUrl">NiceUrl(<span class="arglist"><span class="arg-ref required">nodeID</span></span>)</a></h1>
 <div class="desc">
         <p>
             Returns a string with a friendly url from a node.
             IE.: Instead of having /482 (id) as an url, you can have
             /screenshots/developer/macros (spoken url)
             </p>
-      </div></section><section class="function" id="NiceUrlFullPath(System.Int32)"><h1><a href="#NiceUrlFullPath(System.Int32)">NiceUrlFullPath(System.Int32)(<span class="arglist"><span class="arg-ref">[nodeID]</span></span>)</a></h1>
+        <p>Returns: String with a friendly url from a node</p>
+      </div></section><section class="function" id="NiceUrlFullPath"><h1><a href="#NiceUrlFullPath">NiceUrlFullPath(<span class="arglist"><span class="arg-ref required">nodeID</span></span>)</a></h1>
 <div class="desc">
         <p>
             This method will always add the root node to the path. You should always use NiceUrl, as that is the
             only one who checks for toplevel node settings in the web.config
             </p>
-      </div></section><section class="function" id="NiceUrlWithDomain(System.Int32)"><h1><a href="#NiceUrlWithDomain(System.Int32)">NiceUrlWithDomain(System.Int32)(<span class="arglist"><span class="arg-ref">[nodeID]</span></span>)</a></h1>
+        <p>Returns: String with a friendly url from a node</p>
+      </div></section><section class="function" id="NiceUrlWithDomain"><h1><a href="#NiceUrlWithDomain">NiceUrlWithDomain(<span class="arglist"><span class="arg-ref required">nodeID</span></span>)</a></h1>
 <div class="desc">
         <p>
             This method will always add the domain to the path if the hostnames are set up correctly. 
             </p>
-      </div></section><section class="function" id="NiceUrlWithDomain(System.Int32,System.Boolean)"><h1><a href="#NiceUrlWithDomain(System.Int32,System.Boolean)">NiceUrlWithDomain(System.Int32,System.Boolean)(<span class="arglist"><span class="arg-ref">[nodeID]</span>, <span class="arg-ref">[ignoreUmbracoHostNames]</span></span>)</a></h1>
+        <p>Returns: String with a friendly url with full domain from a node</p>
+      </div></section><section class="function" id="NiceUrlWithDomain"><h1><a href="#NiceUrlWithDomain">NiceUrlWithDomain(<span class="arglist"><span class="arg-ref required">nodeID</span>, <span class="arg-ref required">ignoreUmbracoHostNames</span></span>)</a></h1>
 <div class="desc">
         <p>
             This method will always add the domain to the path. 
             </p>
-      </div></section><section class="function" id="PageElement(System.String)"><h1><a href="#PageElement(System.String)">PageElement(System.String)(<span class="arglist"><span class="arg-ref">[key]</span></span>)</a></h1>
+        <p>Returns: String with a friendly url with full domain from a node</p>
+      </div></section><section class="function" id="PageElement"><h1><a href="#PageElement">PageElement(<span class="arglist"><span class="arg-ref required">key</span></span>)</a></h1>
 <div class="desc">
         <p>
             Returns any element from the currentpage including generic properties
             </p>
+        <p>Returns: A string with the element value</p>
       </div></section><section class="function" id="PageId"><h1><a href="#PageId">PageId(<span class="arglist"></span>)</a></h1>
 <div class="desc">
         <p>
             Returns the identifier of the current page
             </p>
+        <p>Returns: The identifier of the current page</p>
       </div></section><section class="function" id="PageName"><h1><a href="#PageName">PageName(<span class="arglist"></span>)</a></h1>
 <div class="desc">
         <p>
             Returns the title of the current page
             </p>
-      </div></section><section class="function" id="PublishSingleNode(System.Int32)"><h1><a href="#PublishSingleNode(System.Int32)">PublishSingleNode(System.Int32)(<span class="arglist"><span class="arg-ref">[DocumentId]</span></span>)</a></h1>
+        <p>Returns: The title of the current page</p>
+      </div></section><section class="function" id="PublishSingleNode"><h1><a href="#PublishSingleNode">PublishSingleNode(<span class="arglist"><span class="arg-ref required">DocumentId</span></span>)</a></h1>
 <div class="desc">
         <p>
             Publishes the single node, this method is obsolete
             </p>
-      </div></section><section class="function" id="PythonExecute(System.String)"><h1><a href="#PythonExecute(System.String)">PythonExecute(System.String)(<span class="arglist"><span class="arg-ref">[expression]</span></span>)</a></h1>
+      </div></section><section class="function" id="PythonExecute"><h1><a href="#PythonExecute">PythonExecute(<span class="arglist"><span class="arg-ref required">expression</span></span>)</a></h1>
 <div class="desc">
         <p>
             Executes the given python expression and returns the standardoutput.
@@ -336,7 +402,8 @@ So you definitely shouldn't be editing it, or you'll end up sad...
             accessible in this context. Only stuff we initialized in site.py
             can be used.
             </p>
-      </div></section><section class="function" id="PythonExecuteFile(System.String)"><h1><a href="#PythonExecuteFile(System.String)">PythonExecuteFile(System.String)(<span class="arglist"><span class="arg-ref">[file]</span></span>)</a></h1>
+        <p>Returns: Returns the StandardOutput</p>
+      </div></section><section class="function" id="PythonExecuteFile"><h1><a href="#PythonExecuteFile">PythonExecuteFile(<span class="arglist"><span class="arg-ref required">file</span></span>)</a></h1>
 <div class="desc">
         <p>
             Executes the given python script and returns the standardoutput.
@@ -345,22 +412,24 @@ So you definitely shouldn't be editing it, or you'll end up sad...
             accessible in this context. Only stuff we initialized in site.py
             can be used.
             </p>
-      </div></section><section class="function" id="QueryForNode(System.String)"><h1><a href="#QueryForNode(System.String)">QueryForNode(System.String)(<span class="arglist"><span class="arg-ref">[id]</span></span>)</a></h1>
+        <p>Returns: Returns the StandardOutput</p>
+      </div></section><section class="function" id="QueryForNode"><h1><a href="#QueryForNode">QueryForNode(<span class="arglist"><span class="arg-ref required">id</span></span>)</a></h1>
 <div class="desc">
         <p>
             Returns the Xpath query for a node with the specified id
             </p>
-      </div></section><section class="function" id="RePublishNodes(System.Int32)"><h1><a href="#RePublishNodes(System.Int32)">RePublishNodes(System.Int32)(<span class="arglist"><span class="arg-ref">[nodeID]</span></span>)</a></h1>
+        <p>Returns: The Xpath query for the node with the specified id as a string</p>
+      </div></section><section class="function" id="RePublishNodes"><h1><a href="#RePublishNodes">RePublishNodes(<span class="arglist"><span class="arg-ref required">nodeID</span></span>)</a></h1>
 <div class="desc">
         <p>
             Re-publishes all nodes under a given node
             </p>
-      </div></section><section class="function" id="RePublishNodesDotNet(System.Int32)"><h1><a href="#RePublishNodesDotNet(System.Int32)">RePublishNodesDotNet(System.Int32)(<span class="arglist"><span class="arg-ref">[nodeID]</span></span>)</a></h1>
+      </div></section><section class="function" id="RePublishNodesDotNet"><h1><a href="#RePublishNodesDotNet">RePublishNodesDotNet(<span class="arglist"><span class="arg-ref required">nodeID</span></span>)</a></h1>
 <div class="desc">
         <p>
             Re-publishes all nodes under a given node
             </p>
-      </div></section><section class="function" id="RePublishNodesDotNet(System.Int32,System.Boolean)"><h1><a href="#RePublishNodesDotNet(System.Int32,System.Boolean)">RePublishNodesDotNet(System.Int32,System.Boolean)(<span class="arglist"><span class="arg-ref">[nodeID]</span>, <span class="arg-ref">[SaveToDisk]</span></span>)</a></h1>
+      </div></section><section class="function" id="RePublishNodesDotNet"><h1><a href="#RePublishNodesDotNet">RePublishNodesDotNet(<span class="arglist"><span class="arg-ref required">nodeID</span>, <span class="arg-ref required">SaveToDisk</span></span>)</a></h1>
 <div class="desc">
         <p>
             Refreshes the runtime xml index. 
@@ -371,167 +440,188 @@ So you definitely shouldn't be editing it, or you'll end up sad...
         <p>
             Refreshes the xml cache for all nodes
             </p>
-      </div></section><section class="function" id="RegisterClientScriptBlock(System.String,System.String,System.Boolean)"><h1><a href="#RegisterClientScriptBlock(System.String,System.String,System.Boolean)">RegisterClientScriptBlock(System.String,System.String,System.Boolean)(<span class="arglist"><span class="arg-ref">[key]</span>, <span class="arg-ref">[script]</span>, <span class="arg-ref">[addScriptTags]</span></span>)</a></h1>
+      </div></section><section class="function" id="RegisterClientScriptBlock"><h1><a href="#RegisterClientScriptBlock">RegisterClientScriptBlock(<span class="arglist"><span class="arg-ref required">key</span>, <span class="arg-ref required">script</span>, <span class="arg-ref required">addScriptTags</span></span>)</a></h1>
 <div class="desc">
         <p>
             Registers the client script block.
             </p>
-      </div></section><section class="function" id="RegisterJavaScriptFile(System.String,System.String)"><h1><a href="#RegisterJavaScriptFile(System.String,System.String)">RegisterJavaScriptFile(System.String,System.String)(<span class="arglist"><span class="arg-ref">[key]</span>, <span class="arg-ref">[url]</span></span>)</a></h1>
+      </div></section><section class="function" id="RegisterJavaScriptFile"><h1><a href="#RegisterJavaScriptFile">RegisterJavaScriptFile(<span class="arglist"><span class="arg-ref required">key</span>, <span class="arg-ref required">url</span></span>)</a></h1>
 <div class="desc">
         <p>
             Registers the client script include.
             </p>
-      </div></section><section class="function" id="RegisterStyleSheetFile(System.String,System.String)"><h1><a href="#RegisterStyleSheetFile(System.String,System.String)">RegisterStyleSheetFile(System.String,System.String)(<span class="arglist"><span class="arg-ref">[key]</span>, <span class="arg-ref">[url]</span></span>)</a></h1>
+      </div></section><section class="function" id="RegisterStyleSheetFile"><h1><a href="#RegisterStyleSheetFile">RegisterStyleSheetFile(<span class="arglist"><span class="arg-ref required">key</span>, <span class="arg-ref required">url</span></span>)</a></h1>
 <div class="desc">
         <p>
             Registers the client script include.
             </p>
-      </div></section><section class="function" id="RemoveFirstParagraphTag(System.String)"><h1><a href="#RemoveFirstParagraphTag(System.String)">RemoveFirstParagraphTag(System.String)(<span class="arglist"><span class="arg-ref">[text]</span></span>)</a></h1>
+      </div></section><section class="function" id="RemoveFirstParagraphTag"><h1><a href="#RemoveFirstParagraphTag">RemoveFirstParagraphTag(<span class="arglist"><span class="arg-ref required">text</span></span>)</a></h1>
 <div class="desc">
         <p>
             Removes the starting and ending paragraph tags in a string.
             </p>
-      </div></section><section class="function" id="RenderMacroContent(System.String,System.Int32)"><h1><a href="#RenderMacroContent(System.String,System.Int32)">RenderMacroContent(System.String,System.Int32)(<span class="arglist"><span class="arg-ref">[Text]</span>, <span class="arg-ref">[PageId]</span></span>)</a></h1>
+        <p>Returns: Returns the string without starting and endning paragraph tags</p>
+      </div></section><section class="function" id="RenderMacroContent"><h1><a href="#RenderMacroContent">RenderMacroContent(<span class="arglist"><span class="arg-ref required">Text</span>, <span class="arg-ref required">PageId</span></span>)</a></h1>
 <div class="desc">
         <p>
             Renders the content of a macro. Uses the normal template umbraco macro markup as input.
             This only works properly with xslt macros. 
             Python and .ascx based macros will not render properly, as viewstate is not included.
             </p>
-      </div></section><section class="function" id="RenderTemplate(System.Int32)"><h1><a href="#RenderTemplate(System.Int32)">RenderTemplate(System.Int32)(<span class="arglist"><span class="arg-ref">[PageId]</span></span>)</a></h1>
-<div class="desc">
-        <p>
-            Renders the default template for a specific page.
-            </p>
-      </div></section><section class="function" id="RenderTemplate(System.Int32,System.Int32)"><h1><a href="#RenderTemplate(System.Int32,System.Int32)">RenderTemplate(System.Int32,System.Int32)(<span class="arglist"><span class="arg-ref">[PageId]</span>, <span class="arg-ref">[TemplateId]</span></span>)</a></h1>
+        <p>Returns: The rendered macro as a string</p>
+      </div></section><section class="function" id="RenderTemplate"><h1><a href="#RenderTemplate">RenderTemplate(<span class="arglist"><span class="arg-ref required">PageId</span>, <span class="arg-ref required">TemplateId</span></span>)</a></h1>
 <div class="desc">
         <p>
             Renders a template.
             </p>
-      </div></section><section class="function" id="Replace(System.String,System.String,System.String)"><h1><a href="#Replace(System.String,System.String,System.String)">Replace(System.String,System.String,System.String)(<span class="arglist"><span class="arg-ref">[text]</span>, <span class="arg-ref">[oldValue]</span>, <span class="arg-ref">[newValue]</span></span>)</a></h1>
+        <p>Returns: The rendered template as a string</p>
+      </div></section><section class="function" id="RenderTemplate"><h1><a href="#RenderTemplate">RenderTemplate(<span class="arglist"><span class="arg-ref required">PageId</span></span>)</a></h1>
+<div class="desc">
+        <p>
+            Renders the default template for a specific page.
+            </p>
+        <p>Returns: The rendered template as a string.</p>
+      </div></section><section class="function" id="Replace"><h1><a href="#Replace">Replace(<span class="arglist"><span class="arg-ref required">text</span>, <span class="arg-ref required">oldValue</span>, <span class="arg-ref required">newValue</span></span>)</a></h1>
 <div class="desc">
         <p>
             Replaces a specified value with a new one.
             </p>
-      </div></section><section class="function" id="ReplaceLineBreaks(System.String)"><h1><a href="#ReplaceLineBreaks(System.String)">ReplaceLineBreaks(System.String)(<span class="arglist"><span class="arg-ref">[text]</span></span>)</a></h1>
+      </div></section><section class="function" id="ReplaceLineBreaks"><h1><a href="#ReplaceLineBreaks">ReplaceLineBreaks(<span class="arglist"><span class="arg-ref required">text</span></span>)</a></h1>
 <div class="desc">
         <p>
             Replaces text line breaks with html line breaks
             </p>
-      </div></section><section class="function" id="Request(System.String)"><h1><a href="#Request(System.String)">Request(System.String)(<span class="arglist"><span class="arg-ref">[key]</span></span>)</a></h1>
+        <p>Returns: The text with text line breaks replaced with html linebreaks ()</p>
+      </div></section><section class="function" id="Request"><h1><a href="#Request">Request(<span class="arglist"><span class="arg-ref required">key</span></span>)</a></h1>
 <div class="desc">
         <p>
             Get any value from the current Request collection. Please note that there also specialized methods for
             Querystring, Form, Servervariables and Cookie collections
             </p>
-      </div></section><section class="function" id="RequestCookies(System.String)"><h1><a href="#RequestCookies(System.String)">RequestCookies(System.String)(<span class="arglist"><span class="arg-ref">[key]</span></span>)</a></h1>
+        <p>Returns: A string with the value of the Requested element</p>
+      </div></section><section class="function" id="RequestCookies"><h1><a href="#RequestCookies">RequestCookies(<span class="arglist"><span class="arg-ref required">key</span></span>)</a></h1>
 <div class="desc">
         <p>
             Get any value from the users cookie collection
             </p>
-      </div></section><section class="function" id="RequestForm(System.String)"><h1><a href="#RequestForm(System.String)">RequestForm(System.String)(<span class="arglist"><span class="arg-ref">[key]</span></span>)</a></h1>
+        <p>Returns: A string with the value of the cookie</p>
+      </div></section><section class="function" id="RequestForm"><h1><a href="#RequestForm">RequestForm(<span class="arglist"><span class="arg-ref required">key</span></span>)</a></h1>
 <div class="desc">
         <p>
             Get any value from the current Form collection
             </p>
-      </div></section><section class="function" id="RequestQueryString(System.String)"><h1><a href="#RequestQueryString(System.String)">RequestQueryString(System.String)(<span class="arglist"><span class="arg-ref">[key]</span></span>)</a></h1>
+        <p>Returns: A string with the value of the form element</p>
+      </div></section><section class="function" id="RequestQueryString"><h1><a href="#RequestQueryString">RequestQueryString(<span class="arglist"><span class="arg-ref required">key</span></span>)</a></h1>
 <div class="desc">
         <p>
             Get any value from the current Querystring collection
             </p>
-      </div></section><section class="function" id="RequestServerVariables(System.String)"><h1><a href="#RequestServerVariables(System.String)">RequestServerVariables(System.String)(<span class="arglist"><span class="arg-ref">[key]</span></span>)</a></h1>
+        <p>Returns: A string with the value of the querystring element</p>
+      </div></section><section class="function" id="RequestServerVariables"><h1><a href="#RequestServerVariables">RequestServerVariables(<span class="arglist"><span class="arg-ref required">key</span></span>)</a></h1>
 <div class="desc">
         <p>
             Get any element from the server variables collection
             </p>
-      </div></section><section class="function" id="SendMail(System.String,System.String,System.String,System.String,System.Boolean)"><h1><a href="#SendMail(System.String,System.String,System.String,System.String,System.Boolean)">SendMail(System.String,System.String,System.String,System.String,System.Boolean)(<span class="arglist"><span class="arg-ref">[FromMail]</span>, <span class="arg-ref">[ToMail]</span>, <span class="arg-ref">[Subject]</span>, <span class="arg-ref">[Body]</span>, <span class="arg-ref">[IsHtml]</span></span>)</a></h1>
+        <p>Returns: A string with the value of the requested element</p>
+      </div></section><section class="function" id="SendMail"><h1><a href="#SendMail">SendMail(<span class="arglist"><span class="arg-ref required">FromMail</span>, <span class="arg-ref required">ToMail</span>, <span class="arg-ref required">Subject</span>, <span class="arg-ref required">Body</span>, <span class="arg-ref required">IsHtml</span></span>)</a></h1>
 <div class="desc">
         <p>
             Sends an e-mail using the System.Net.Mail.MailMessage object
             </p>
-      </div></section><section class="function" id="Session(System.String)"><h1><a href="#Session(System.String)">Session(System.String)(<span class="arglist"><span class="arg-ref">[key]</span></span>)</a></h1>
+      </div></section><section class="function" id="Session"><h1><a href="#Session">Session(<span class="arglist"><span class="arg-ref required">key</span></span>)</a></h1>
 <div class="desc">
         <p>
             Get any element from current user session
             </p>
+        <p>Returns: A string with the value of the requested element</p>
       </div></section><section class="function" id="SessionId"><h1><a href="#SessionId">SessionId(<span class="arglist"></span>)</a></h1>
 <div class="desc">
         <p>
             Returns the current ASP.NET session identifier
             </p>
-      </div></section><section class="function" id="ShortDate(System.String)"><h1><a href="#ShortDate(System.String)">ShortDate(System.String)(<span class="arglist"><span class="arg-ref">[Date]</span></span>)</a></h1>
+        <p>Returns: The current ASP.NET session identifier</p>
+      </div></section><section class="function" id="ShortDate"><h1><a href="#ShortDate">ShortDate(<span class="arglist"><span class="arg-ref required">Date</span></span>)</a></h1>
 <div class="desc">
         <p>
             Converts a string to a Short Date and returns it as a string
             </p>
-      </div></section><section class="function" id="ShortDate(System.String,System.Boolean,System.String)"><h1><a href="#ShortDate(System.String,System.Boolean,System.String)">ShortDate(System.String,System.Boolean,System.String)(<span class="arglist"><span class="arg-ref">[Date]</span>, <span class="arg-ref">[WithTime]</span>, <span class="arg-ref">[TimeSplitter]</span></span>)</a></h1>
+        <p>Returns: A Short Date as a string.</p>
+      </div></section><section class="function" id="ShortDate"><h1><a href="#ShortDate">ShortDate(<span class="arglist"><span class="arg-ref required">Date</span>, <span class="arg-ref required">WithTime</span>, <span class="arg-ref required">TimeSplitter</span></span>)</a></h1>
 <div class="desc">
         <p>
             Converts a datetime string to the ShortDate format.
             </p>
-      </div></section><section class="function" id="ShortDateWithGlobal(System.String,System.String)"><h1><a href="#ShortDateWithGlobal(System.String,System.String)">ShortDateWithGlobal(System.String,System.String)(<span class="arglist"><span class="arg-ref">[Date]</span>, <span class="arg-ref">[GlobalAlias]</span></span>)</a></h1>
+      </div></section><section class="function" id="ShortDateWithGlobal"><h1><a href="#ShortDateWithGlobal">ShortDateWithGlobal(<span class="arglist"><span class="arg-ref required">Date</span>, <span class="arg-ref required">GlobalAlias</span></span>)</a></h1>
 <div class="desc">
         <p>
             Converts a string to a Short Date, with a specific culture, and returns it as a string
             </p>
-      </div></section><section class="function" id="ShortDateWithTimeAndGlobal(System.String,System.String)"><h1><a href="#ShortDateWithTimeAndGlobal(System.String,System.String)">ShortDateWithTimeAndGlobal(System.String,System.String)(<span class="arglist"><span class="arg-ref">[Date]</span>, <span class="arg-ref">[GlobalAlias]</span></span>)</a></h1>
+        <p>Returns: A short date with a specific culture, as a string</p>
+      </div></section><section class="function" id="ShortDateWithTimeAndGlobal"><h1><a href="#ShortDateWithTimeAndGlobal">ShortDateWithTimeAndGlobal(<span class="arglist"><span class="arg-ref required">Date</span>, <span class="arg-ref required">GlobalAlias</span></span>)</a></h1>
 <div class="desc">
         <p>
             Converts a string to a Short Date with time, with a specific culture, and returns it as a string
             </p>
-      </div></section><section class="function" id="ShortTime(System.String)"><h1><a href="#ShortTime(System.String)">ShortTime(System.String)(<span class="arglist"><span class="arg-ref">[Date]</span></span>)</a></h1>
+        <p>Returns: A short date withi time, with a specific culture, as a string</p>
+      </div></section><section class="function" id="ShortTime"><h1><a href="#ShortTime">ShortTime(<span class="arglist"><span class="arg-ref required">Date</span></span>)</a></h1>
 <div class="desc">
         <p>
             Converts a datetime string to the ShortTime format.
             </p>
-      </div></section><section class="function" id="Split(System.String,System.String)"><h1><a href="#Split(System.String,System.String)">Split(System.String,System.String)(<span class="arglist"><span class="arg-ref">[StringToSplit]</span>, <span class="arg-ref">[Separator]</span></span>)</a></h1>
+      </div></section><section class="function" id="Split"><h1><a href="#Split">Split(<span class="arglist"><span class="arg-ref required">StringToSplit</span>, <span class="arg-ref required">Separator</span></span>)</a></h1>
 <div class="desc">
         <p>
             Split a string into xml elements
             </p>
-      </div></section><section class="function" id="StripHtml(System.String)"><h1><a href="#StripHtml(System.String)">StripHtml(System.String)(<span class="arglist"><span class="arg-ref">[text]</span></span>)</a></h1>
+        <p>Returns: An XPathNodeIterator containing the substrings in the format of </p>
+      </div></section><section class="function" id="StripHtml"><h1><a href="#StripHtml">StripHtml(<span class="arglist"><span class="arg-ref required">text</span></span>)</a></h1>
 <div class="desc">
         <p>
             Strips all html from a string.
             </p>
-      </div></section><section class="function" id="Tidy(System.String,System.Boolean)"><h1><a href="#Tidy(System.String,System.Boolean)">Tidy(System.String,System.Boolean)(<span class="arglist"><span class="arg-ref">[StringToTidy]</span>, <span class="arg-ref">[LiveEditing]</span></span>)</a></h1>
+        <p>Returns: Returns the string without any html tags.</p>
+      </div></section><section class="function" id="Tidy"><h1><a href="#Tidy">Tidy(<span class="arglist"><span class="arg-ref required">StringToTidy</span>, <span class="arg-ref required">LiveEditing</span></span>)</a></h1>
 <div class="desc">
         <p>
             Cleans the spified string with tidy
             </p>
-      </div></section><section class="function" id="TruncateString(System.String,System.Int32,System.String)"><h1><a href="#TruncateString(System.String,System.Int32,System.String)">TruncateString(System.String,System.Int32,System.String)(<span class="arglist"><span class="arg-ref">[Text]</span>, <span class="arg-ref">[MaxLength]</span>, <span class="arg-ref">[AddString]</span></span>)</a></h1>
+      </div></section><section class="function" id="TruncateString"><h1><a href="#TruncateString">TruncateString(<span class="arglist"><span class="arg-ref required">Text</span>, <span class="arg-ref required">MaxLength</span>, <span class="arg-ref required">AddString</span></span>)</a></h1>
 <div class="desc">
         <p>
             Truncates a string if it's too long
             </p>
-      </div></section><section class="function" id="UnPublishSingleNode(System.Int32)"><h1><a href="#UnPublishSingleNode(System.Int32)">UnPublishSingleNode(System.Int32)(<span class="arglist"><span class="arg-ref">[DocumentId]</span></span>)</a></h1>
+        <p>Returns: A truncated string if text if longer than MaxLength appended with the addString parameters. If text is shorter
+            then MaxLength then the full - non-truncated - string is returned</p>
+      </div></section><section class="function" id="UnPublishSingleNode"><h1><a href="#UnPublishSingleNode">UnPublishSingleNode(<span class="arglist"><span class="arg-ref required">DocumentId</span></span>)</a></h1>
 <div class="desc">
         <p>
             Unpublish a node, by removing it from the runtime xml index. Note, prior to this the Document should be 
             marked unpublished by setting the publish property on the document object to false
             </p>
-      </div></section><section class="function" id="UpdateDocumentCache(System.Int32)"><h1><a href="#UpdateDocumentCache(System.Int32)">UpdateDocumentCache(System.Int32)(<span class="arglist"><span class="arg-ref">[documentId]</span></span>)</a></h1>
+      </div></section><section class="function" id="UpdateDocumentCache"><h1><a href="#UpdateDocumentCache">UpdateDocumentCache(<span class="arglist"><span class="arg-ref required">documentId</span></span>)</a></h1>
 <div class="desc">
         <p>
             Publishes a Document by adding it to the runtime xml index. Note, prior to this the Document should be 
             marked published by calling Publish(User u) on the document object.
             </p>
-      </div></section><section class="function" id="UrlEncode(System.String)"><h1><a href="#UrlEncode(System.String)">UrlEncode(System.String)(<span class="arglist"><span class="arg-ref">[Text]</span></span>)</a></h1>
+      </div></section><section class="function" id="UrlEncode"><h1><a href="#UrlEncode">UrlEncode(<span class="arglist"><span class="arg-ref required">Text</span></span>)</a></h1>
 <div class="desc">
         <p>
             URL-encodes a string 
             </p>
-      </div></section><section class="function" id="md5(System.String)"><h1><a href="#md5(System.String)">md5(System.String)(<span class="arglist"><span class="arg-ref">[text]</span></span>)</a></h1>
+        <p>Returns: A URL-encoded string</p>
+      </div></section><section class="function" id="md5"><h1><a href="#md5">md5(<span class="arglist"><span class="arg-ref required">text</span></span>)</a></h1>
 <div class="desc">
         <p>
             Returns an MD5 hash of the string specified
             </p>
-      </div></section><section class="function" id="setCookie(System.String,System.String)"><h1><a href="#setCookie(System.String,System.String)">setCookie(System.String,System.String)(<span class="arglist"><span class="arg-ref">[key]</span>, <span class="arg-ref">[value]</span></span>)</a></h1>
+        <p>Returns: Md5 has of the string</p>
+      </div></section><section class="function" id="setCookie"><h1><a href="#setCookie">setCookie(<span class="arglist"><span class="arg-ref required">key</span>, <span class="arg-ref required">value</span></span>)</a></h1>
 <div class="desc">
         <p>
             Add a cookie variable to the current user
             </p>
-      </div></section><section class="function" id="setSession(System.String,System.String)"><h1><a href="#setSession(System.String,System.String)">setSession(System.String,System.String)(<span class="arglist"><span class="arg-ref">[key]</span>, <span class="arg-ref">[value]</span></span>)</a></h1>
+      </div></section><section class="function" id="setSession"><h1><a href="#setSession">setSession(<span class="arglist"><span class="arg-ref required">key</span>, <span class="arg-ref required">value</span></span>)</a></h1>
 <div class="desc">
         <p>
             Add a session variable to the current user
