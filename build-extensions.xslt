@@ -2,6 +2,10 @@
 <xsl:stylesheet
 	version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:func="http://exslt.org/functions"
+	xmlns:get="http://xmlns.greystate.dk/2014/functions"
+	exclude-result-prefixes="get"
+	extension-element-prefixes="func"
 >
 
 	<xsl:output method="xml" indent="yes" omit-xml-declaration="no" />
@@ -15,7 +19,7 @@
 	</xsl:template>
 	
 	<xsl:template match="member[starts-with(@name, 'M:')]">
-		<xsl:variable name="name" select="substring-after(@name, 'umbraco.library.')" />
+		<xsl:variable name="name" select="get:function-name(@name)" />
 		<function name="{$name}">
 			<xsl:apply-templates select="summary" />
 			<xsl:apply-templates select="param" />
@@ -35,5 +39,16 @@
 	<xsl:template match="member[not(starts-with(@name, 'M:'))] | member[contains(@name, '#ctor')]">
 		<!-- We don't want output from these -->
 	</xsl:template>
+	
+	<func:function name="get:function-name">
+		<xsl:param name="fname" />
+		<xsl:variable name="name" select="substring-before(substring-after($fname, 'umbraco.library.'), '(')" />
+		<xsl:if test="normalize-space($name)">
+			<func:result select="normalize-space($name)" />
+		</xsl:if>
+		<xsl:if test="not(normalize-space($name))">
+			<func:result select="substring-after($fname, 'umbraco.library.')" />
+		</xsl:if>
+	</func:function>
 
 </xsl:stylesheet>
