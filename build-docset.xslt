@@ -43,8 +43,8 @@ So you definitely shouldn't be editing it, or you'll end up sad...
 				</xsl:apply-templates>
 			</section> -->
 
-			<section id="xpath-functions">
-				<h1>XPath functions</h1>
+			<section id="extension-functions">
+				<h1>Extension functions</h1>
 				<xsl:apply-templates select="docset/functions/function">
 					<xsl:sort select="@name" data-type="text" order="ascending" />
 				</xsl:apply-templates>
@@ -196,8 +196,7 @@ So you definitely shouldn't be editing it, or you'll end up sad...
 	<xsl:template name="toc-link">
 		<nav class="toc-link">
 			<a href="#toc" title="Show a simplified table of contents">Summary</a>
-			<a href="#xslt-elements">Elements</a>
-			<a href="#xpath-functions">Functions</a>
+			<a href="#extension-functions">Functions</a>
 			<xsl:call-template name="feed-link" />
 		</nav>
 	</xsl:template>
