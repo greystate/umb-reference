@@ -15,6 +15,7 @@ The actual docs are generated from the XML *doc comments* throughout the actual 
 ## Credits
 
 * Thanks to [@leekelleher][LEE] for supplying the exported XML docs from .NET
+* Uses [@LeaVerou][LEA]'s awesome [Prism][PRISM] for syntax-highlighting any code samples
 
 ## Dev notes
 
@@ -28,4 +29,6 @@ I use [CodeKit][] for preprocessing the LESS file (enabling autoprefixer), and a
 [UMBREF]: http://greystate.dk/resources/umbraco/reference/
 [CodeKit]: http://incident57.com/codekit/
 [ISSUES]: https://github.com/greystate/umb-reference/issues
-[LEE]: https://github/leekelleher/
+[LEE]: https://github.com/leekelleher/
+[LEA]: https://github.com/LeaVerou/
+[PRISM]: http://prismjs.com/
