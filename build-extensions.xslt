@@ -35,18 +35,5 @@
 	<xsl:template match="member[not(starts-with(@name, 'M:'))] | member[contains(@name, '#ctor')]">
 		<!-- We don't want output from these -->
 	</xsl:template>
-<!--	<functions>
-		<function name="translate">
-			<description>
-				<p>
-					Performs character-replacements in the <var>source</var> string, by replacing every character in the
-					<var>find</var> argument found in <var>source</var>, with the character in <var>replace</var> at
-					the same index </p>
-			</description>
-			<argument name="source" type="string" required="yes" />
-			<argument name="find" type="string" required="yes" />
-			<argument name="replace" type="string" required="yes" />
-		</function> -->
-	
 
 </xsl:stylesheet>
