@@ -32,6 +32,9 @@ cp -R public/* "$BUNDLE/Contents/Resources/Documents"
 # Copy the Info.plist file
 cp "lib/Info.plist" "$BUNDLE/Contents"
 
+# Copy the icon
+cp "lib/icon.png" "$BUNDLE"
+
 # Create the SQLite file + Index
 sqlite3 "$BUNDLE/Contents/Resources/docSet.dsidx" "CREATE TABLE searchIndex(id INTEGER PRIMARY KEY, name TEXT, type TEXT, path TEXT);"
 sqlite3 "$BUNDLE/Contents/Resources/docSet.dsidx" "CREATE UNIQUE INDEX anchor ON searchIndex (name, type, path);"
