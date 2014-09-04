@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Umbraco Library Quick Reference — v0.2.0</title>
+<title>Umbraco Library Quick Reference — v0.3.0</title>
 <link rel="stylesheet" href="css/docset.css">
 <script src="scripts/application.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
 <!--
@@ -343,7 +343,7 @@ So you definitely shouldn't be editing it, or you'll end up sad...
             Converts a string to datetime in the longdate with day name format.
             </p>
         <p>Returns: A datetime in the longdate formate with day name, as a string</p>
-      </div></section><section class="function" id="NiceUrl"><h1><a href="#NiceUrl">NiceUrl(<span class="arglist"><span class="arg-ref required">nodeID</span></span>)</a></h1>
+      </div></section><section class="function with-sample" id="NiceUrl"><h1><a href="#NiceUrl">NiceUrl(<span class="arglist"><span class="arg-ref required">nodeID</span></span>)</a></h1>
 <div class="desc">
         <p>
             Returns a string with a friendly url from a node.
@@ -351,7 +351,10 @@ So you definitely shouldn't be editing it, or you'll end up sad...
             /screenshots/developer/macros (spoken url)
             </p>
         <p>Returns: String with a friendly url from a node</p>
-      </div></section><section class="function" id="NiceUrlFullPath"><h1><a href="#NiceUrlFullPath">NiceUrlFullPath(<span class="arglist"><span class="arg-ref required">nodeID</span></span>)</a></h1>
+      </div>
+<div class="sample">
+		<pre><code>&lt;a href="{umbraco.library:NiceUrl(@id)}"&gt;Link&lt;/a&gt;</code></pre>
+	</div></section><section class="function" id="NiceUrlFullPath"><h1><a href="#NiceUrlFullPath">NiceUrlFullPath(<span class="arglist"><span class="arg-ref required">nodeID</span></span>)</a></h1>
 <div class="desc">
         <p>
             This method will always add the root node to the path. You should always use NiceUrl, as that is the

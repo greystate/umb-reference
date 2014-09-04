@@ -14,7 +14,7 @@
 	<xsl:variable name="samples" select="document('codesamples/samples.xml')/codesamples/example" />
 
 	<xsl:template match="doc">
-		<docset name="Umbraco Library Quick Reference" version="0.2.0">
+		<docset name="Umbraco Library Quick Reference" version="0.3.0">
 			<functions>
 				<xsl:apply-templates select="members/member" />
 			</functions>
