@@ -10,6 +10,9 @@
 
 	<xsl:output method="xml" indent="yes" omit-xml-declaration="no" />
 
+	<!-- Pull in code samples  -->
+	<xsl:variable name="samples" select="document('codesamples/samples.xml')/codesamples/example" />
+
 	<xsl:template match="doc">
 		<docset name="Umbraco Library Quick Reference" version="0.2.0">
 			<functions>
@@ -25,6 +28,7 @@
 				<xsl:apply-templates select="summary" />
 				<xsl:apply-templates select="returns[normalize-space()]" />
 			</description>
+			<xsl:copy-of select="$samples[@for = current()/@name]" />
 			<xsl:apply-templates select="param" />
 		</function>
 	</xsl:template>

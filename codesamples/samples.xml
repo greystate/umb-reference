@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<codesamples>
+	<example for="M:umbraco.library.NiceUrl(System.Int32)">
+		<pre><code><![CDATA[<a href="{umbraco.library:NiceUrl(@id)}">Link</a>]]></code></pre>
+	</example>
+</codesamples>
